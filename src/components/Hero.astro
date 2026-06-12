@@ -1,0 +1,141 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="hero-wordmark" aria-label="PRFM Sports">
+      <span class="hero-prfm">PRFM</span>
+      <span class="hero-sports">SPORTS<span class="hero-dot" aria-hidden="true"></span></span>
+    </div>
+
+    <div class="hero-info">
+      <p class="hero-desc">
+        PRFM Sports is a modern sports management group focused on building high-impact events, developing the next generation of athletes, and operating best-in-class facilities.
+      </p>
+      <div class="hero-actions">
+        <a href="/training" class="btn btn--filled">GET STARTED</a>
+        <a href="/pathway" class="btn btn--outline">EXPLORE</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 75vh;
+    padding-top: 60px;
+    overflow: clip;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #e8a090 0%, #d4908a 20%, #c8a8a0 45%, #b8b8b8 70%, #9a9a9a 100%);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    height: calc(75vh - 60px);
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3.5rem 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .hero-wordmark {
+    display: flex;
+    flex-direction: column;
+    line-height: 0.88;
+  }
+
+  .hero-prfm {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(5rem, 9.6vw, 9.6vw);
+    color: #141414;
+    letter-spacing: 0.35em;
+    display: block;
+  }
+
+  .hero-sports {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(4.5rem, 9.1vw, 9.1vw);
+    color: #141414;
+    letter-spacing: 0.35em;
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 0.25em;
+  }
+
+  .hero-dot {
+    display: inline-block;
+    width: 0.2em;
+    height: 0.2em;
+    background: var(--orange);
+    flex-shrink: 0;
+    margin-bottom: 0.1em;
+  }
+
+  .hero-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    align-self: flex-end;
+    max-width: 480px;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: rgba(30, 18, 14, 0.7);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    padding: 0.75rem 1.75rem;
+    display: inline-block;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .btn--filled {
+    background: var(--orange);
+    color: #fff;
+  }
+
+  .btn--filled:hover {
+    background: #d44420;
+  }
+
+  .btn--outline {
+    background: transparent;
+    color: rgba(30, 18, 14, 0.85);
+    border: 1.5px solid rgba(30, 18, 14, 0.4);
+  }
+
+  .btn--outline:hover {
+    border-color: rgba(30, 18, 14, 0.85);
+    color: rgba(30, 18, 14, 1);
+  }
+
+  @media (max-width: 768px) {
+    .hero-info {
+      align-self: flex-start;
+    }
+  }
+</style>

@@ -1,0 +1,454 @@
+---
+import Base from '../layouts/Base.astro';
+import Footer from './Footer.astro';
+
+interface InfoCard {
+  icon: string;
+  label: string;
+  value: string;
+  badge?: string;
+}
+
+interface Expect {
+  title: string;
+  desc: string;
+}
+
+interface FormatCol {
+  label: string;
+  content: string; // HTML allowed
+}
+
+interface Props {
+  title: string;
+  pageTitle?: string;
+  region: string;
+  statusLabel: string;
+  infoCards: InfoCard[];
+  expects: Expect[];
+  formatCols: FormatCol[];
+  pastSection?: { heading: string; content: string };
+  ctaLabel?: string;
+  ctaHref?: string;
+  hideCta?: boolean;
+  heroCtaLabel?: string;
+  heroCtaHref?: string;
+}
+
+const {
+  title,
+  pageTitle,
+  region,
+  statusLabel,
+  infoCards,
+  expects,
+  formatCols,
+  pastSection,
+  ctaLabel = 'APPLY NOW',
+  ctaHref = '#',
+  hideCta = false,
+  heroCtaLabel,
+  heroCtaHref,
+} = Astro.props;
+---
+
+<Base title={`${pageTitle ?? title} — PRFM Sports`}>
+  <!-- Minimal top bar -->
+  <div class="topbar">
+    <a href="/" class="topbar-back">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M10 3L5 8L10 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      BACK TO HOME
+    </a>
+  </div>
+
+  <main class="event-page">
+    <!-- Hero -->
+    <section class="ev-hero">
+      <div class="ev-container">
+        <p class="ev-region">{region}</p>
+        <h1 class="ev-title">{title}</h1>
+        <div class="ev-hero-bottom">
+          <p class="ev-status">{statusLabel}</p>
+          {heroCtaLabel && heroCtaHref && (
+            <a href={heroCtaHref} class="ev-hero-cta">{heroCtaLabel}</a>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Info cards -->
+    <section class="ev-info">
+      <div class="ev-container">
+        <div class="ev-info-grid">
+          {infoCards.map(card => (
+            <div class="ev-card">
+              <span class="ev-card-icon" aria-hidden="true" set:html={card.icon} />
+              <p class="ev-card-label">{card.label}</p>
+              <p class="ev-card-value">{card.value}</p>
+              {card.badge && <p class="ev-card-badge">{card.badge}</p>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- What to Expect -->
+    <section class="ev-expect">
+      <div class="ev-container">
+        <h2 class="ev-section-heading">WHAT TO EXPECT</h2>
+        <div class="ev-expect-grid">
+          {expects.map(item => (
+            <div class="ev-expect-item">
+              <span class="ev-expect-dot" aria-hidden="true"></span>
+              <div>
+                <p class="ev-expect-title">{item.title}</p>
+                <p class="ev-expect-desc">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Format -->
+    <section class="ev-format">
+      <div class="ev-container">
+        <h2 class="ev-section-heading">FORMAT</h2>
+        <div class="ev-format-grid">
+          {formatCols.map(col => (
+            <div class="ev-format-col">
+              <p class="ev-format-label">{col.label}</p>
+              <div class="ev-format-body" set:html={col.content} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Past All-Star Game -->
+    {pastSection && (
+      <section class="ev-past">
+        <div class="ev-container">
+          <h2 class="ev-section-heading">{pastSection.heading}</h2>
+          <div class="ev-past-body" set:html={pastSection.content} />
+        </div>
+      </section>
+    )}
+
+    <!-- CTA -->
+    {!hideCta && (
+      <section class="ev-cta">
+        <div class="ev-container">
+          <a href={ctaHref} class="ev-cta-btn">{ctaLabel}</a>
+        </div>
+      </section>
+    )}
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  /* Top bar */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--cream);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    height: 52px;
+    display: flex;
+    align-items: center;
+  }
+
+  .topbar-back {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s;
+  }
+
+  .topbar-back:hover {
+    color: var(--orange);
+  }
+
+  /* Shared container */
+  .ev-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Hero */
+  .ev-hero {
+    padding: 4rem 0 3rem;
+    background: var(--cream);
+  }
+
+  .ev-region {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .ev-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-transform: uppercase;
+    max-width: 900px;
+    margin-bottom: 1.5rem;
+  }
+
+  .ev-hero-bottom {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .ev-status {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+
+  .ev-hero-cta {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    padding: 0.75rem 2rem;
+    transition: background 0.2s;
+  }
+
+  .ev-hero-cta:hover {
+    background: #d44420;
+  }
+
+  /* Info cards */
+  .ev-info {
+    padding: 3rem 0;
+    background: var(--cream);
+  }
+
+  .ev-info-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .ev-card {
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: var(--cream);
+  }
+
+  .ev-card-icon {
+    color: var(--orange);
+    opacity: 0.6;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .ev-card-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+
+  .ev-card-value {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .ev-card-badge {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--orange);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+
+  .ev-card-badge::before {
+    content: '';
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1.5px solid var(--orange);
+    border-radius: 50%;
+  }
+
+  /* Section heading */
+  .ev-section-heading {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  /* What to Expect */
+  .ev-expect {
+    padding: 4rem 0;
+    border-top: 1px solid var(--border);
+    background: var(--cream);
+  }
+
+  .ev-expect-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 3rem;
+  }
+
+  .ev-expect-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ev-expect-dot {
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: var(--orange);
+    flex-shrink: 0;
+    margin-top: 0.35rem;
+  }
+
+  .ev-expect-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .ev-expect-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--muted);
+  }
+
+  /* Format */
+  .ev-format {
+    padding: 4rem 0;
+    border-top: 1px solid var(--border);
+    background: var(--cream);
+  }
+
+  .ev-format-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .ev-format-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .ev-format-body {
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: var(--ink);
+  }
+
+  .ev-format-body strong {
+    font-weight: 700;
+  }
+
+  /* Past section */
+  .ev-past {
+    padding: 4rem 0;
+    border-top: 1px solid var(--border);
+    background: var(--cream);
+  }
+
+  .ev-past-body {
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 640px;
+  }
+
+  .ev-past-body strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  /* CTA */
+  .ev-cta {
+    padding: 3rem 0 5rem;
+    background: var(--cream);
+  }
+
+  .ev-cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    padding: 0.85rem 2.5rem;
+    transition: background 0.2s;
+  }
+
+  .ev-cta-btn:hover {
+    background: #d44420;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .ev-info-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .ev-expect-grid,
+    .ev-format-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ev-info-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

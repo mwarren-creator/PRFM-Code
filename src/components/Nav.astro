@@ -1,0 +1,256 @@
+---
+const navLinks = [
+  { label: 'ABOUT', href: '/about' },
+  { label: 'SERVICES', href: '/services' },
+  { label: 'PATHWAY', href: '/pathway' },
+  { label: 'TRAINING', href: '/training' },
+  { label: 'PROJECTS', href: '/projects' },
+];
+
+const eventLinks = [
+  { label: 'Girls All Star Game', href: '/events/girls-all-star' },
+  { label: 'Boys All Star Game', href: '/events/boys-all-star' },
+];
+---
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="PRFM Sports home">
+      <img src="/prfm-logo-white.png" alt="PRFM Sports" class="nav-logo-img" />
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <div class="nav-dropdown">
+        <button class="nav-link nav-link--dropdown" aria-expanded="false" aria-haspopup="true">
+          EVENTS <span class="nav-caret" aria-hidden="true">&#8964;</span>
+        </button>
+        <div class="nav-dropdown-menu" role="menu">
+          {eventLinks.map(l => (
+            <a href={l.href} class="nav-dropdown-item" role="menuitem">{l.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <a href="/pathway" class="nav-link">PATHWAY</a>
+      <a href="/training" class="nav-link">TRAINING</a>
+      <a href="/projects" class="nav-link">PROJECTS</a>
+    </nav>
+
+    <a href="/pathway" class="nav-cta">GET STARTED</a>
+
+    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav-mobile-menu" aria-hidden="true">
+    <a href="/events" class="nav-mobile-link">EVENTS</a>
+    <a href="/pathway" class="nav-mobile-link">PATHWAY</a>
+    <a href="/training" class="nav-mobile-link">TRAINING</a>
+    <a href="/projects" class="nav-mobile-link">PROJECTS</a>
+    <a href="/pathway" class="nav-mobile-cta">GET STARTED</a>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: var(--nav-bg);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-logo-img {
+    height: 40px;
+    width: auto;
+  }
+
+  @media (min-width: 769px) {
+    .nav-logo-img {
+      height: 48px;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-link {
+    color: rgba(255,255,255,0.85);
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    padding: 0.5rem 0.75rem;
+    border-radius: 2px;
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .nav-link:hover {
+    color: #fff;
+  }
+
+  .nav-caret {
+    font-size: 0.7rem;
+    opacity: 0.7;
+  }
+
+  .nav-dropdown {
+    position: relative;
+  }
+
+  .nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    background: var(--nav-bg);
+    border: 1px solid rgba(255,255,255,0.12);
+    min-width: 200px;
+    padding: 0.5rem 0;
+  }
+
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    display: block;
+  }
+
+  .nav-dropdown-item {
+    display: block;
+    padding: 0.6rem 1.25rem;
+    color: rgba(255,255,255,0.8);
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .nav-dropdown-item:hover {
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+  }
+
+  .nav-cta {
+    margin-left: auto;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    padding: 0.55rem 1.25rem;
+    white-space: nowrap;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+
+  .nav-cta:hover {
+    background: #d44420;
+  }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: white;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .nav-mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--nav-bg);
+    padding: 1rem 2rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-mobile-link {
+    color: rgba(255,255,255,0.85);
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .nav-mobile-cta {
+    display: inline-block;
+    margin-top: 1.25rem;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    padding: 0.65rem 1.5rem;
+    align-self: flex-start;
+  }
+
+  @media (max-width: 768px) {
+    .nav-links,
+    .nav-cta {
+      display: none;
+    }
+
+    .nav-hamburger {
+      display: flex;
+    }
+  }
+
+  .nav-mobile-menu.is-open {
+    display: flex;
+  }
+</style>
+
+<script>
+  const hamburger = document.querySelector('.nav-hamburger') as HTMLButtonElement;
+  const mobileMenu = document.querySelector('.nav-mobile-menu') as HTMLElement;
+
+  hamburger?.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('is-open');
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+  });
+</script>

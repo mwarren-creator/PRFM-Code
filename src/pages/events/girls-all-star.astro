@@ -1,0 +1,77 @@
+---
+import EventPageLayout from '../../components/EventPageLayout.astro';
+
+const calIcon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`;
+const trophyIcon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4a2 2 0 0 1-2-2V5h4"/><path d="M18 9h2a2 2 0 0 0 2-2V5h-4"/><path d="M12 17v4"/><path d="M8 21h8"/><path d="M6 9a6 6 0 0 0 12 0V3H6v6z"/></svg>`;
+const pinIcon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+const boltIcon = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`;
+---
+
+<EventPageLayout
+  title="HIGH SCHOOL GIRLS SOCCER ALL STAR GAME"
+  pageTitle="HS Girls Soccer All Star Game"
+  region="UTAH COUNTY"
+  statusLabel="APPLICATIONS OPEN 2027"
+  heroCtaLabel="APPLY NOW"
+  heroCtaHref="/events/girls-all-star/apply"
+  infoCards={[
+    {
+      icon: calIcon,
+      label: 'DATE',
+      value: 'TBA — early June',
+    },
+    {
+      icon: trophyIcon,
+      label: 'FORMAT',
+      value: 'Freshman vs Sophomore & Junior vs Senior',
+      badge: '17 PLAYERS PER TEAM',
+    },
+    {
+      icon: pinIcon,
+      label: 'LOCATION',
+      value: 'TBA',
+    },
+    {
+      icon: boltIcon,
+      label: 'COLLEGE COACHES',
+      value: 'College coaches in attendance',
+    },
+  ]}
+  expects={[
+    {
+      title: 'CUSTOM JERSEY & SWAG',
+      desc: 'Every player receives a custom game-day jersey and a loaded swag bag',
+    },
+    {
+      title: 'TOP TALENT',
+      desc: "Come cheer on the best high school girls soccer players in Utah County",
+    },
+    {
+      title: 'COLLEGE EXPOSURE',
+      desc: 'College coaches scouting and evaluating players in real time',
+    },
+    {
+      title: 'PROFESSIONAL COVERAGE',
+      desc: 'Professional photo and video coverage of the entire event',
+    },
+  ]}
+  formatCols={[
+    {
+      label: 'HOW PLAYERS ARE SELECTED',
+      content: `
+        <p>Players submit an application to be considered for the All-Star Game. Each application is carefully reviewed by our selection committee to identify the top talent across Utah County. This process ensures that the players who have made the biggest impact on and off the field earn their spot on the roster.</p>
+        <br/>
+        <p>Each squad will carry <strong>17 players</strong>, going head-to-head in two showcase matchups: <strong>Freshman vs. Sophomore</strong> and <strong>Junior vs. Senior</strong>. One night. Bragging rights on the line.</p>
+      `,
+    },
+    {
+      label: 'THE PERKS',
+      content: `
+        <p>Every All Star will rep a <strong>custom game-day jersey</strong> designed exclusively for this event. On top of that, each player walks away with a <strong>loaded swag bag</strong> packed with gear and partner products.</p>
+        <br/>
+        <p>The event also features <strong>professional photo and video coverage</strong>, giving every player high-quality content to share and add to their recruiting portfolio.</p>
+      `,
+    },
+  ]}
+/>
+

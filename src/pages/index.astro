@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Marquee from '../components/Marquee.astro';
+import FeatureBlock from '../components/FeatureBlock.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+
+const features = [
+  {
+    number: '001',
+    title: 'UTAH SOCCER PATHWAY PROGRAM',
+    description: 'A membership program for Utah players and families, built around clear development, measurable progress, and a direct route to collegiate soccer.',
+    bullets: [
+      'Personalized player pathway profile and annual assessment',
+      'Customized recruiting roadmap and college matching',
+      'Verified combine metrics benchmarked to college standards',
+      'Two tiers: self-service Plus and hands-on Elite Recruiting',
+    ],
+    ctaLabel: 'EXPLORE THE PATHWAY',
+    ctaHref: '/pathway',
+  },
+  {
+    number: '002',
+    title: 'HIGH SCHOOL GIRLS SOCCER ALL STAR GAME',
+    description: "Utah County's top high school girls soccer players go head-to-head in a premier showcase, Freshman vs. Sophomore and Junior vs. Senior.",
+    bullets: [
+      '17 players per team, selected by our committee',
+      'Custom game-day jersey and loaded swag bag for every player',
+      'College coaches scouting and evaluating in real time',
+      'Professional photo and video coverage for recruiting',
+    ],
+    ctaLabel: 'CHECK OUT THE ALL STAR EVENT',
+    ctaHref: '/events',
+    flip: true,
+    dark: true,
+  },
+  {
+    number: '003',
+    title: 'HIGH SCHOOL BOYS SOCCER ALL STAR GAME',
+    description: "Utah County's top high school boys soccer players battle in a premier showcase, Freshman vs. Sophomore and Junior vs. Senior.",
+    bullets: [
+      '17 players per team, selected by our committee',
+      'Custom game-day jersey and loaded swag bag for every player',
+      'College coaches scouting and evaluating in real time',
+      'Professional photo and video coverage for recruiting',
+    ],
+    ctaLabel: 'CHECK OUT THE BOYS ALL STAR EVENT',
+    ctaHref: '/events/boys-all-star',
+  },
+  {
+    number: '004',
+    title: 'THE PROJECT',
+    description: 'A premier indoor sports dome in Utah County, featuring full-field turf and built to give athletes and teams a true home.',
+    bullets: [
+      'Multi-sport experiences for athletes at every stage',
+      'A true home for the youth athlete community',
+      'Next-level events, leagues, and tournaments',
+      'Training built for serious development and results',
+    ],
+    ctaLabel: 'LEARN MORE',
+    ctaHref: '#contact',
+    flip: true,
+    dark: true,
+  },
+];
+---
+
+<Base>
+  <Nav />
+  <main>
+    <Hero />
+    <Marquee />
+    {features.map(f => (
+      <FeatureBlock
+        number={f.number}
+        title={f.title}
+        description={f.description}
+        bullets={f.bullets}
+        ctaLabel={f.ctaLabel}
+        ctaHref={f.ctaHref}
+        flip={f.flip}
+        dark={f.dark}
+      />
+    ))}
+    <CTA />
+  </main>
+  <Footer />
+</Base>

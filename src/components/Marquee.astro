@@ -1,0 +1,69 @@
+---
+interface Props {
+  text?: string;
+}
+const { text = '25% OFF OUR PLAYER PATHWAY PROGRAM' } = Astro.props;
+
+const items = Array(8).fill(text);
+---
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-inner">
+    {items.map((item) => (
+      <span class="marquee-item">
+        {item}
+        <span class="marquee-dot">&#9642;</span>
+      </span>
+    ))}
+    {items.map((item) => (
+      <span class="marquee-item" aria-hidden="true">
+        {item}
+        <span class="marquee-dot">&#9642;</span>
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    background: var(--cream);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 0.65rem 0;
+  }
+
+  .marquee-inner {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 28s linear infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .marquee-item {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .marquee-dot {
+    color: var(--orange);
+    font-size: 0.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-inner {
+      animation: none;
+    }
+  }
+</style>
