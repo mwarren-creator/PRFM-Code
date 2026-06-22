@@ -2,7 +2,12 @@
 ---
 
 <section class="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-blob hero-blob--1"></div>
+    <div class="hero-blob hero-blob--2"></div>
+    <div class="hero-blob hero-blob--3"></div>
+    <div class="hero-blob hero-blob--4"></div>
+  </div>
 
   <div class="hero-inner">
     <div class="hero-wordmark" aria-label="PRFM Sports">
@@ -36,30 +41,46 @@
     background: #ffffff;
   }
 
-  .hero-bg::before {
-    content: '';
+  .hero-blob {
     position: absolute;
-    top: -25%;
-    left: -15%;
-    width: 85vw;
-    height: 85vw;
     border-radius: 50%;
     background: #cfff3d;
-    opacity: 0.55;
-    filter: blur(70px);
   }
 
-  .hero-bg::after {
-    content: '';
-    position: absolute;
+  .hero-blob--1 {
+    top: -30%;
+    left: -15%;
+    width: 80vw;
+    height: 80vw;
+    opacity: 0.6;
+    filter: blur(65px);
+  }
+
+  .hero-blob--2 {
     bottom: -40%;
-    left: 5%;
-    width: 70vw;
-    height: 70vw;
-    border-radius: 50%;
-    background: #cfff3d;
-    opacity: 0.35;
+    left: 0%;
+    width: 60vw;
+    height: 60vw;
+    opacity: 0.38;
+    filter: blur(80px);
+  }
+
+  .hero-blob--3 {
+    top: 10%;
+    left: 30%;
+    width: 45vw;
+    height: 45vw;
+    opacity: 0.25;
     filter: blur(90px);
+  }
+
+  .hero-blob--4 {
+    top: -10%;
+    right: 5%;
+    width: 35vw;
+    height: 35vw;
+    opacity: 0.12;
+    filter: blur(100px);
   }
 
   .hero-inner {
