@@ -28,9 +28,9 @@ import Footer from '../components/Footer.astro';
           <p>Improve technically with our thousand-touch ball mastery curriculum and increase your speed, explosiveness, power and core strength with soccer-specific performance training.</p>
           <p>Our program has been tailored for over 25 years to develop youth soccer players at every level. We are excited to take you to the next phase of your soccer career.</p>
         </div>
-        <a href="https://buy.stripe.com/5kQ00jfdo4rnd1t9iU0x207" class="tr-register" target="_blank" rel="noopener noreferrer">
+        <button class="tr-register" data-open-modal>
           REGISTER &nbsp;&rarr;
-        </a>
+        </button>
       </div>
     </section>
 
@@ -103,7 +103,7 @@ import Footer from '../components/Footer.astro';
             <p class="tr-session-desc">Improve your technical ability, speed, agility and quickness this summer to compete at a higher level in the upcoming season.</p>
             <p class="tr-session-times-label">AVAILABLE TIMES</p>
             <p class="tr-session-times">6:00 – 7:00 PM or 7:00 – 8:00 PM</p>
-            <a href="https://buy.stripe.com/5kQ00jfdo4rnd1t9iU0x207" class="tr-session-btn" target="_blank" rel="noopener noreferrer">REGISTER &nbsp;&rarr;</a>
+            <button class="tr-session-btn" data-open-modal data-session="01">REGISTER &nbsp;&rarr;</button>
           </div>
 
           <div class="tr-session">
@@ -112,7 +112,7 @@ import Footer from '../components/Footer.astro';
             <p class="tr-session-desc">Develop more power and explosiveness in soccer specific movements while improving your technical skills with the ball.</p>
             <p class="tr-session-times-label">AVAILABLE TIMES</p>
             <p class="tr-session-times">6:00 – 7:00 PM or 7:00 – 8:00 PM</p>
-            <a href="https://buy.stripe.com/5kQ00jfdo4rnd1t9iU0x207" class="tr-session-btn" target="_blank" rel="noopener noreferrer">REGISTER &nbsp;&rarr;</a>
+            <button class="tr-session-btn" data-open-modal data-session="02">REGISTER &nbsp;&rarr;</button>
           </div>
 
           <div class="tr-session">
@@ -121,7 +121,7 @@ import Footer from '../components/Footer.astro';
             <p class="tr-session-desc">In-season focus on first touch, head-up decision making, speed of play and quick close touches for in-game scenarios.</p>
             <p class="tr-session-times-label">AVAILABLE TIMES</p>
             <p class="tr-session-times">6:30 – 7:30 PM or 7:30 – 8:30 PM</p>
-            <a href="https://buy.stripe.com/5kQ00jfdo4rnd1t9iU0x207" class="tr-session-btn" target="_blank" rel="noopener noreferrer">REGISTER &nbsp;&rarr;</a>
+            <button class="tr-session-btn" data-open-modal data-session="03">REGISTER &nbsp;&rarr;</button>
           </div>
 
         </div>
@@ -137,7 +137,7 @@ import Footer from '../components/Footer.astro';
           <div class="tr-why-body">
             <p>With over 5,000 players trained, Morgan understands the development and soccer industry better than 99% of US soccer experts. Our comprehensive platform offers specialized training in every area of soccer development. Whether you're honing your technique or refining your physicality, our curated programs ensure you learn from the best.</p>
             <p>Elevate your game and excel in soccer with additional training, mental performance work and video analysis — in-season and off-season.</p>
-            <a href="https://buy.stripe.com/5kQ00jfdo4rnd1t9iU0x207" class="tr-register" style="margin-top: 1.5rem;" target="_blank" rel="noopener noreferrer">REGISTER &nbsp;&rarr;</a>
+            <button class="tr-register" style="margin-top: 1.5rem;" data-open-modal>REGISTER &nbsp;&rarr;</button>
           </div>
         </div>
       </div>
@@ -146,6 +146,329 @@ import Footer from '../components/Footer.astro';
   </main>
 
   <Footer />
+
+  <!-- Netlify form detection (hidden static form) -->
+  <form name="training-registration" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="training-registration" />
+    <input name="session" />
+    <input name="day" />
+    <input name="time" />
+    <input name="parent_name" />
+    <input name="email" />
+    <input name="phone" />
+    <input name="player_name" />
+  </form>
+
+  <!-- Registration Modal -->
+  <div id="registerModal" class="rm-overlay" role="dialog" aria-modal="true" aria-labelledby="rmTitle">
+    <div class="rm-box">
+      <button class="rm-close" id="rmClose" aria-label="Close">&times;</button>
+      <p class="rm-title" id="rmTitle">REGISTER FOR GROUP TRAINING</p>
+      <p class="rm-subtitle">Confirm your session, day and time. $75 per month &mdash; 4 sessions.</p>
+
+      <form id="rmForm" novalidate>
+        <input type="hidden" name="form-name" value="training-registration" />
+        <input type="hidden" name="bot-field" />
+
+        <div class="rm-row rm-row-3">
+          <div class="rm-field">
+            <label for="rmSession">SESSION *</label>
+            <select id="rmSession" name="session" required>
+              <option value="">Select session</option>
+              <option value="Session 01 — June 15–July 8">Session 01 — June 15–July 8</option>
+              <option value="Session 02 — July 13–Aug 5">Session 02 — July 13–Aug 5</option>
+              <option value="Session 03 — Aug 10–Sept 2">Session 03 — Aug 10–Sept 2</option>
+            </select>
+          </div>
+
+          <div class="rm-field">
+            <label for="rmDay">DAY *</label>
+            <select id="rmDay" name="day" required>
+              <option value="Mon or Wed">Mon or Wed</option>
+              <option value="Monday">Monday</option>
+              <option value="Wednesday">Wednesday</option>
+            </select>
+          </div>
+
+          <div class="rm-field">
+            <label for="rmTime">TIME *</label>
+            <select id="rmTime" name="time" required disabled>
+              <option value="">Select session first</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="rm-row rm-row-2">
+          <div class="rm-field">
+            <label for="rmParent">PARENT / GUARDIAN NAME *</label>
+            <input type="text" id="rmParent" name="parent_name" placeholder="Full name" required />
+          </div>
+
+          <div class="rm-field">
+            <label for="rmEmail">EMAIL *</label>
+            <input type="email" id="rmEmail" name="email" placeholder="email@example.com" required />
+          </div>
+        </div>
+
+        <div class="rm-row rm-row-2">
+          <div class="rm-field">
+            <label for="rmPhone">PHONE NUMBER *</label>
+            <input type="text" id="rmPhone" name="phone" placeholder="(555) 123-4567" required />
+          </div>
+
+          <div class="rm-field">
+            <label for="rmPlayer">PLAYER NAME *</label>
+            <input type="text" id="rmPlayer" name="player_name" placeholder="Full name" required />
+          </div>
+        </div>
+
+        <button type="submit" class="rm-submit">CONTINUE TO PAYMENT</button>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    .rm-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .rm-overlay.is-open {
+      display: flex;
+    }
+    .rm-box {
+      position: relative;
+      background: #fff;
+      max-width: 560px;
+      width: 100%;
+      padding: 2rem;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .rm-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      color: #0f1014;
+      padding: 0.2rem 0.4rem;
+    }
+    .rm-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #0f1014;
+      margin-bottom: 0.4rem;
+    }
+    .rm-subtitle {
+      font-size: 0.88rem;
+      color: #6b6b6b;
+      margin-bottom: 1.75rem;
+    }
+    .rm-row {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .rm-row-3 { grid-template-columns: repeat(3, 1fr); }
+    .rm-row-2 { grid-template-columns: repeat(2, 1fr); }
+    .rm-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .rm-field label {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #0f1014;
+    }
+    .rm-field input,
+    .rm-field select {
+      width: 100%;
+      border: 1px solid #d9d0c5;
+      padding: 0.65rem 0.75rem;
+      font-family: 'Archivo', sans-serif;
+      font-size: 0.9rem;
+      color: #0f1014;
+      background: #fff;
+      border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      box-sizing: border-box;
+    }
+    .rm-field input:focus,
+    .rm-field select:focus {
+      outline: 2px solid #cfff3d;
+      outline-offset: -2px;
+    }
+    .rm-field input.rm-error,
+    .rm-field select.rm-error {
+      border-color: #e03434;
+    }
+    .rm-field select:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .rm-submit {
+      display: block;
+      width: 100%;
+      background: #cfff3d;
+      color: #0f1014;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1rem;
+      border: none;
+      cursor: pointer;
+      margin-top: 1.25rem;
+      transition: background 0.2s;
+    }
+    .rm-submit:hover { background: #b8f020; }
+    @media (max-width: 520px) {
+      .rm-row-3 { grid-template-columns: 1fr; }
+      .rm-row-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <script>
+    const STRIPE_URL = 'https://buy.stripe.com/5kQ00jfdo4rnd1t9iU0x207';
+
+    const SESSION_TIMES = {
+      '01': ['6:00–7:00 PM', '7:00–8:00 PM'],
+      '02': ['6:00–7:00 PM', '7:00–8:00 PM'],
+      '03': ['6:30–7:30 PM', '7:30–8:30 PM'],
+    };
+
+    const SESSION_VALUES = {
+      '01': 'Session 01 — June 15–July 8',
+      '02': 'Session 02 — July 13–Aug 5',
+      '03': 'Session 03 — Aug 10–Sept 2',
+    };
+
+    const overlay = document.getElementById('registerModal');
+    const closeBtn = document.getElementById('rmClose');
+    const sessionSelect = document.getElementById('rmSession') as HTMLSelectElement;
+    const timeSelect = document.getElementById('rmTime') as HTMLSelectElement;
+    const form = document.getElementById('rmForm') as HTMLFormElement;
+
+    function updateTimes(sessionKey: string) {
+      timeSelect.innerHTML = '';
+      if (!sessionKey) {
+        const opt = document.createElement('option');
+        opt.value = '';
+        opt.textContent = 'Select session first';
+        timeSelect.appendChild(opt);
+        timeSelect.disabled = true;
+        return;
+      }
+      const times = SESSION_TIMES[sessionKey as keyof typeof SESSION_TIMES];
+      if (!times) return;
+      times.forEach((t) => {
+        const opt = document.createElement('option');
+        opt.value = t;
+        opt.textContent = t;
+        timeSelect.appendChild(opt);
+      });
+      timeSelect.disabled = false;
+    }
+
+    function openModal(sessionKey?: string) {
+      if (sessionKey) {
+        sessionSelect.value = SESSION_VALUES[sessionKey as keyof typeof SESSION_VALUES] || '';
+        updateTimes(sessionKey);
+      } else {
+        sessionSelect.value = '';
+        updateTimes('');
+      }
+      overlay!.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      overlay!.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    // Open modal on button click
+    document.querySelectorAll('[data-open-modal]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const sessionKey = (btn as HTMLElement).dataset.session;
+        openModal(sessionKey);
+      });
+    });
+
+    // Close on X button
+    closeBtn!.addEventListener('click', closeModal);
+
+    // Close on overlay background click
+    overlay!.addEventListener('click', (e) => {
+      if (e.target === overlay) closeModal();
+    });
+
+    // Session change updates time options
+    sessionSelect.addEventListener('change', () => {
+      const val = sessionSelect.value;
+      const key = Object.keys(SESSION_VALUES).find(
+        (k) => SESSION_VALUES[k as keyof typeof SESSION_VALUES] === val
+      );
+      updateTimes(key || '');
+    });
+
+    // Form submit
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Clear previous errors
+      form.querySelectorAll('.rm-error').forEach((el) => el.classList.remove('rm-error'));
+
+      // Validate
+      let valid = true;
+      const required = form.querySelectorAll('[required]');
+      required.forEach((field) => {
+        const el = field as HTMLInputElement | HTMLSelectElement;
+        if (!el.value.trim()) {
+          el.classList.add('rm-error');
+          valid = false;
+        }
+      });
+      if (!valid) return;
+
+      const submitBtn = form.querySelector('.rm-submit') as HTMLButtonElement;
+      submitBtn.textContent = 'SUBMITTING…';
+      submitBtn.disabled = true;
+
+      try {
+        const formData = new FormData();
+        formData.append('form-name', 'training-registration');
+        formData.append('session', (document.getElementById('rmSession') as HTMLSelectElement).value);
+        formData.append('day', (document.getElementById('rmDay') as HTMLSelectElement).value);
+        formData.append('time', (document.getElementById('rmTime') as HTMLSelectElement).value);
+        formData.append('parent_name', (document.getElementById('rmParent') as HTMLInputElement).value);
+        formData.append('email', (document.getElementById('rmEmail') as HTMLInputElement).value);
+        formData.append('phone', (document.getElementById('rmPhone') as HTMLInputElement).value);
+        formData.append('player_name', (document.getElementById('rmPlayer') as HTMLInputElement).value);
+
+        await fetch('/', { method: 'POST', body: formData });
+      } catch (_) {
+        // Proceed to Stripe even if Netlify submission fails
+      }
+
+      window.location.href = STRIPE_URL;
+    });
+  </script>
 </Base>
 
 <style>
@@ -233,6 +556,11 @@ import Footer from '../components/Footer.astro';
     letter-spacing: 0.1em;
     padding: 0.85rem 2rem;
     transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   .tr-register:hover { background: #b8f020; }
@@ -393,6 +721,11 @@ import Footer from '../components/Footer.astro';
     padding: 0.7rem 1.5rem;
     align-self: flex-start;
     transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   .tr-session-btn:hover { background: #b8f020; }
