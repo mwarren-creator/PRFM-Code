@@ -33,7 +33,33 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #cfff3d 0%, #b8f020 20%, #a8d840 45%, #b8b8b8 70%, #9a9a9a 100%);
+    background: #ffffff;
+  }
+
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: -10%;
+    width: 65vw;
+    height: 65vw;
+    border-radius: 50%;
+    background: #cfff3d;
+    opacity: 0.55;
+    filter: blur(60px);
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: 10%;
+    width: 50vw;
+    height: 50vw;
+    border-radius: 50%;
+    background: #cfff3d;
+    opacity: 0.35;
+    filter: blur(80px);
   }
 
   .hero-inner {
