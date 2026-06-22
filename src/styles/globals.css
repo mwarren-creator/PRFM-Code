@@ -7,12 +7,12 @@
 }
 
 :root {
-  --cream: #f4ede2;
-  --ink: #1a1a1a;
+  --cream: #ffffff;
+  --ink: #1d1f26;
   --orange: #cfff3d;
-  --muted: #6b5f58;
-  --border: #d9d0c5;
-  --nav-bg: #111111;
+  --muted: #5c6170;
+  --border: #e4e4e8;
+  --nav-bg: rgba(0, 0, 0, 0.95);
 }
 
 html {
