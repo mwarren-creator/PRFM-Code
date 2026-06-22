@@ -23,9 +23,51 @@ const {
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
     <slot />
   </body>
 </html>
+
+<script>
+  const dot = document.getElementById('cursorDot') as HTMLElement;
+  const ring = document.getElementById('cursorRing') as HTMLElement;
+
+  let dotX = 0, dotY = 0;
+  let ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    dotX = e.clientX;
+    dotY = e.clientY;
+    dot.style.left = dotX + 'px';
+    dot.style.top = dotY + 'px';
+  });
+
+  function animateRing() {
+    ringX += (dotX - ringX) * 0.12;
+    ringY += (dotY - ringY) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.addEventListener('mouseover', (e) => {
+    const target = e.target as Element;
+    if (target.closest('a, button, [role="button"]')) {
+      dot.classList.add('is-hovering');
+      ring.classList.add('is-hovering');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    const target = e.target as Element;
+    if (target.closest('a, button, [role="button"]')) {
+      dot.classList.remove('is-hovering');
+      ring.classList.remove('is-hovering');
+    }
+  });
+</script>
 
 <style is:global>
   @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap');
@@ -34,12 +76,64 @@ const {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    cursor: none !important;
+  }
+
+  .cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background: #cfff3d;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s ease-out, height 0.15s ease-out;
+    mix-blend-mode: multiply;
+  }
+
+  .cursor-ring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid #cfff3d;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s ease-out, height 0.2s ease-out, opacity 0.2s ease-out;
+    opacity: 0.6;
+  }
+
+  .cursor-dot.is-hovering {
+    width: 6px;
+    height: 6px;
+  }
+
+  .cursor-ring.is-hovering {
+    width: 48px;
+    height: 48px;
+    opacity: 0.35;
+  }
+
+  @media (pointer: coarse) {
+    .cursor-dot,
+    .cursor-ring {
+      display: none;
+    }
+    *, *::before, *::after {
+      cursor: auto !important;
+    }
   }
 
   :root {
     --cream: #f9f9f7;
     --ink: #1a1a1a;
-    --orange: #e8552e;
+    --orange: #cfff3d;
     --muted: #6b5f58;
     --border: #d9d0c5;
     --nav-bg: #111111;

@@ -8,6 +8,7 @@
     <div class="hero-wordmark" aria-label="PRFM Sports">
       <span class="hero-prfm">PRFM</span>
       <span class="hero-sports">SPORTS<span class="hero-dot" aria-hidden="true"></span></span>
+      <span class="hero-tagline">— MODERN SPORTS MANAGEMENT</span>
     </div>
 
     <div class="hero-info">
@@ -33,7 +34,7 @@
   .hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #e8a090 0%, #d4908a 20%, #c8a8a0 45%, #b8b8b8 70%, #9a9a9a 100%);
+    background: linear-gradient(135deg, #cfff3d 0%, #b8f020 20%, #a8d840 45%, #b8b8b8 70%, #9a9a9a 100%);
   }
 
   .hero-inner {
@@ -83,6 +84,16 @@
     margin-bottom: 0.1em;
   }
 
+  .hero-tagline {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(0.75rem, 1.2vw, 1.2vw);
+    letter-spacing: 0.15em;
+    color: rgba(15, 16, 20, 0.55);
+    text-transform: uppercase;
+    margin-top: 0.75rem;
+    display: block;
+  }
+
   .hero-info {
     display: flex;
     flex-direction: column;
@@ -114,23 +125,22 @@
   }
 
   .btn--filled {
-    background: var(--orange);
-    color: #fff;
+    background: #cfff3d;
+    color: #0f1014;
   }
 
   .btn--filled:hover {
-    background: #d44420;
+    background: #b8f020;
   }
 
   .btn--outline {
     background: transparent;
-    color: rgba(30, 18, 14, 0.85);
-    border: 1.5px solid rgba(30, 18, 14, 0.4);
+    color: #0f1014;
+    border: 1.5px solid rgba(15, 16, 20, 0.5);
   }
 
   .btn--outline:hover {
-    border-color: rgba(30, 18, 14, 0.85);
-    color: rgba(30, 18, 14, 1);
+    border-color: #0f1014;
   }
 
   @media (max-width: 768px) {
