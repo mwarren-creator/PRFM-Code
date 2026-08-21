@@ -1,0 +1,461 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const stats = [
+  { value: '20+', label: 'YEARS IN SOCCER' },
+  { value: '200+', label: 'EVENTS DIRECTED' },
+  { value: '10K+', label: 'ATHLETES IMPACTED' },
+  { value: '4', label: 'VENTURES FOUNDED' },
+];
+
+const story = [
+  "Morgan Gilliam's soccer journey began in Texas, where he played under the mentorship of Chris Hayden, now the VP of Player Development at FC Dallas — a coach who instilled the knowledge, discipline, and love for the game that would define Morgan's career. From there, he took his talents to Brigham Young University, competing on the men's soccer team the only college program that played in the USL Premier Development League.",
+  "At BYU, Morgan didn't just play — he built. In 2006, he co-founded Calle Street Soccer, the first brand dedicated to street soccer culture. Calle won the prestigious BYU Business Plan Competition in 2007, earning a $52,500 award and national retail placement — proving that Morgan could compete both on and off the pitch.",
+  "After working in the MLS front office with Real Salt Lake, Morgan pursued a Master's in Sports Industry Management at Georgetown University, deepening his understanding of the business side of sports. He then returned to Utah to lead events and grassroots marketing for the Utah Youth Soccer Association, impacting thousands of young athletes statewide.",
+  'From launching his own coaching programs to co-founding a tech startup and now leading PRFM Sports, Morgan brings a rare blend of player experience, coaching expertise, business acumen, and operational precision to everything he touches.',
+];
+
+const timeline = [
+  {
+    range: '1998 – 2001',
+    title: 'CLUB SOCCER IN DALLAS',
+    location: 'Dallas, TX',
+    body: "Played for the Texas Lightning under Chris Hayden, competing against future USMNT star Clint Dempsey year after year. Also spent two years in St. Louis playing for Scott Gallagher — building a competitive foundation across some of the country's top youth soccer programs.",
+  },
+  {
+    range: '2001 – 2009',
+    title: 'BRIGHAM YOUNG UNIVERSITY PDL SOCCER TEAM',
+    location: 'Provo, UT',
+    body: 'Opportunity to play abroad in Mexico, Chile, Costa Rica and Fiji while playing at BYU. Earned a BA in Latin American Studies and competed on the only college soccer program playing in the USL Premier Development League.',
+  },
+  {
+    range: '2006',
+    title: 'FOUNDED CALLE STREET SOCCER',
+    location: 'Provo, UT',
+    body: 'Co-founded Calle — the first brand dedicated to street soccer culture. Won the 2007 BYU Business Plan Competition with a $52,500 award, gaining national retail distribution and pioneering a new niche in the soccer market.',
+  },
+  {
+    range: '2007 – 2008',
+    title: 'REAL SALT LAKE',
+    location: 'Salt Lake City, UT',
+    body: 'Served as Sales Representative and Merchandise Manager for MLS club Real Salt Lake, gaining firsthand experience in professional sports business operations, fan engagement, and event production.',
+  },
+  {
+    range: '2009',
+    title: 'WSP SOCCER FACILITIES & IMF SOCCER',
+    location: 'Various',
+    body: 'Directed IMF Soccer operations while building agency relations at Capital Premium — expanding his network across international soccer markets and player representation.',
+  },
+  {
+    range: '2010 – 2011',
+    title: 'GEORGETOWN UNIVERSITY — M.S. SPORTS MANAGEMENT',
+    location: 'Washington, D.C.',
+    body: 'Earned a Master’s degree in Sports Industry Management from Georgetown University, studying under top minds in the business of sport while simultaneously working as a Video Editing Specialist and Latin American Player Representative for James Grant Sports Limited.',
+  },
+  {
+    range: '2011 – 2014',
+    title: 'UTAH YOUTH SOCCER ASSOCIATION',
+    location: 'Salt Lake City, UT',
+    body: 'Served as Director of Events and Grassroots Marketing for UYSA, overseeing statewide tournaments, player development initiatives, and community outreach that reached thousands of young athletes across Utah.',
+  },
+  {
+    range: '2014 – 2018',
+    title: 'COACHING & PLAYER DEVELOPMENT',
+    location: 'Utah',
+    body: "Launched independent soccer training programs, earning a U.S. Soccer Federation National 'C' Coaching License. Directed World Sports Partners (WSP), building a network of elite trainers focused on individualized youth athlete development.",
+  },
+  {
+    range: '2018',
+    title: 'CO-FOUNDED FIDDLE SOFTWARE',
+    location: 'Provo, UT',
+    body: 'Applied his operational mindset beyond sports — co-founding Fiddle, an inventory operations platform helping brands streamline supply chain management.',
+  },
+  {
+    range: '2024 – PRESENT',
+    title: 'PARTNER — PRFM SPORTS',
+    location: 'Nationwide',
+    body: 'Brings 20 years of experience across every sector of soccer — playing, coaching, events, facilities, technology, and business development — to PRFM Sports. Leading the vision to modernize youth sports infrastructure and athlete development.',
+  },
+];
+
+const credentials = [
+  { title: 'BA, LATIN AMERICAN STUDIES', org: 'Brigham Young University', range: '2001 – 2009' },
+  { title: 'M.S. SPORTS INDUSTRY MANAGEMENT', org: 'Georgetown University', range: '2010 – 2011' },
+  { title: "NATIONAL 'C' COACHING LICENSE", org: 'U.S. Soccer Federation', range: 'Certified' },
+];
+---
+
+<Base
+  title="Morgan Gilliam — Partner, PRFM Sports"
+  description="Two decades of building, competing, and operating across every level of soccer — from the Texas high school fields to MLS front offices, from Georgetown classrooms to founding his own ventures."
+>
+  <Nav />
+  <main class="bio">
+    <section class="bio-hero">
+      <div class="bio-hero-text">
+        <span class="eyebrow">PARTNER &middot; PRFM SPORTS</span>
+        <h1 class="bio-title">MORGAN<br />GILLIAM.</h1>
+        <p class="bio-lede">
+          Two decades of building, competing, and operating across every level of soccer — from the Texas high school fields to MLS front offices, from Georgetown classrooms to founding his own ventures.
+        </p>
+      </div>
+      <img src="/team/morgan-gilliam.jpeg" alt="Morgan Gilliam" class="bio-photo" />
+    </section>
+
+    <section class="stat-strip">
+      {stats.map(s => (
+        <div class="stat-cell">
+          <span class="stat-value">{s.value}</span>
+          <span class="stat-label">{s.label}</span>
+        </div>
+      ))}
+    </section>
+
+    <section class="story">
+      <div class="section-heading">
+        <span class="eyebrow">THE STORY</span>
+        <h2 class="section-title">A CAREER FORGED IN THE GAME</h2>
+      </div>
+      <div class="story-copy">
+        {story.map(p => <p>{p}</p>)}
+      </div>
+    </section>
+
+    <section class="journey">
+      <div class="section-heading">
+        <span class="eyebrow">THE JOURNEY</span>
+        <h2 class="section-title">20 YEARS IN SOCCER</h2>
+      </div>
+      <div class="timeline">
+        {timeline.map(t => (
+          <div class="timeline-row">
+            <div class="timeline-when">
+              <span class="timeline-range">{t.range}</span>
+              <span class="timeline-location">{t.location}</span>
+            </div>
+            <div class="timeline-what">
+              <h3 class="timeline-title">{t.title}</h3>
+              <p class="timeline-body">{t.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="credentials">
+      <div class="section-heading">
+        <span class="eyebrow">CREDENTIALS</span>
+        <h2 class="section-title">EDUCATION &amp; LICENSES</h2>
+      </div>
+      <div class="credentials-grid">
+        {credentials.map(c => (
+          <div class="credential-cell">
+            <h3 class="credential-title">{c.title}</h3>
+            <p class="credential-org">{c.org}</p>
+            <p class="credential-range">{c.range}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="bio-cta">
+      <h2 class="bio-cta-title">LET'S CONNECT.</h2>
+      <p class="bio-cta-desc">Whether it's building events, developing athletes, or launching the next big sports venture — Morgan is ready to talk.</p>
+      <div class="bio-cta-actions">
+        <a href="mailto:info@prfmsports.com" class="bio-cta-btn bio-cta-btn--primary">GET IN TOUCH</a>
+        <a href="/about" class="bio-cta-btn bio-cta-btn--secondary">MEET THE TEAM</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .bio-hero {
+    margin: 0 auto;
+    padding: 6rem 5rem 4rem;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .bio-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .bio-lede {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 480px;
+  }
+
+  .bio-photo {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stat-cell {
+    background: var(--ink);
+    color: white;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--orange);
+  }
+
+  .stat-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .story,
+  .journey,
+  .credentials,
+  .bio-cta {
+    margin: 0 auto;
+    padding: 5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .story-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 760px;
+  }
+
+  .story-copy p {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--muted);
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .timeline-row {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2rem;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .timeline-row:first-child {
+    padding-top: 0;
+  }
+
+  .timeline-when {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .timeline-range {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+
+  .timeline-location {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .timeline-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-body {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .credential-cell {
+    background: var(--cream);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .credential-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .credential-org {
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .credential-range {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .bio-cta {
+    background: var(--ink);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .bio-cta-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    letter-spacing: -0.01em;
+  }
+
+  .bio-cta-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.65);
+    max-width: 480px;
+  }
+
+  .bio-cta-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .bio-cta-btn {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    padding: 0.85rem 2rem;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+
+  .bio-cta-btn--primary {
+    background: var(--orange);
+    color: #0f1014;
+  }
+
+  .bio-cta-btn--primary:hover {
+    background: #b8f020;
+  }
+
+  .bio-cta-btn--secondary {
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.85);
+  }
+
+  .bio-cta-btn--secondary:hover {
+    border-color: rgba(255,255,255,0.7);
+    color: #fff;
+  }
+
+  @media (max-width: 900px) {
+    .bio-hero {
+      grid-template-columns: 1fr;
+      padding: 5rem 1.5rem 3rem;
+    }
+
+    .bio-photo {
+      aspect-ratio: 16 / 10;
+    }
+
+    .stat-strip {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .story,
+    .journey,
+    .credentials,
+    .bio-cta {
+      padding: 3rem 1.5rem;
+    }
+
+    .timeline-row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .credentials-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

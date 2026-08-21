@@ -1,18 +1,33 @@
 ---
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  description?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  eyebrow = "WHAT'S NEXT",
+  heading = "LET'S BUILD WHAT'S NEXT IN SPORTS",
+  description = 'Whether you are improving an organization, launching an event, developing a facility or helping an athlete reach the next level, PRFM Sports can help turn your vision into a sustainable plan.',
+  primaryLabel = 'SCHEDULE A CONSULTATION',
+  primaryHref = '/contact',
+  secondaryLabel = 'CONTACT PRFM SPORTS',
+  secondaryHref = 'mailto:info@prfmsports.com',
+} = Astro.props;
 ---
 
 <section class="cta">
   <div class="cta-inner">
-    <p class="cta-eyebrow">READY TO PERFORM?</p>
-    <h2 class="cta-heading">
-      LET'S BUILD<br />SOMETHING<br />TOGETHER.
-    </h2>
-    <p class="cta-desc">
-      Whether you're organizing a league, managing a facility, or launching a tournament — we engineer the infrastructure for your success.
-    </p>
+    <p class="cta-eyebrow">{eyebrow}</p>
+    <h2 class="cta-heading">{heading}</h2>
+    <p class="cta-desc">{description}</p>
     <div class="cta-actions">
-      <a href="mailto:info@prfmsports.com" class="cta-btn cta-btn--primary">CONTACT US</a>
-      <a href="/services" class="cta-btn cta-btn--secondary">VIEW SERVICES</a>
+      <a href={primaryHref} class="cta-btn cta-btn--primary">{primaryLabel}</a>
+      <a href={secondaryHref} class="cta-btn cta-btn--secondary">{secondaryLabel}</a>
     </div>
   </div>
 </section>
@@ -24,12 +39,11 @@
   }
 
   .cta-inner {
-    
     margin: 0 auto;
     padding: 7rem 5rem;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 2rem 4rem;
     align-items: center;
   }
 
@@ -45,16 +59,10 @@
   .cta-heading {
     font-family: 'Archivo Black', sans-serif;
     font-weight: 900;
-    font-size: clamp(3rem, 7vw, 7rem);
-    line-height: 0.9;
+    font-size: clamp(2.25rem, 5vw, 4.5rem);
+    line-height: 0.95;
     letter-spacing: -0.01em;
     text-transform: uppercase;
-  }
-
-  .cta-right {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
   }
 
   .cta-desc {

@@ -5,8 +5,8 @@ export interface Props {
 }
 
 const {
-  title = 'PRFM Sports — Operating the Future of Sports',
-  description = 'PRFM Sports is a modern sports management group focused on building high-impact events, developing the next generation of athletes, and operating best-in-class facilities.',
+  title = 'PRFM Sports — Sports Management & Consulting',
+  description = 'PRFM Sports is a modern sports management and consulting company helping youth sports organizations, event operators, facilities and athletes reach their full potential.',
 } = Astro.props;
 ---
 
@@ -20,7 +20,7 @@ const {
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   </head>
   <body>
     <slot />
@@ -28,8 +28,6 @@ const {
 </html>
 
 <style is:global>
-  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600&display=swap');
-
   *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -46,7 +44,7 @@ const {
   }
 
   html {
-    font-family: 'Barlow', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: var(--cream);
     color: var(--ink);
     scroll-behavior: smooth;

@@ -1,0 +1,263 @@
+---
+import Base from '../layouts/Base.astro';
+import MinimalHeader from '../components/MinimalHeader.astro';
+import Footer from '../components/Footer.astro';
+
+const jobs = [
+  {
+    type: 'FULL-TIME',
+    title: 'EVENT MANAGER',
+    description: "We're looking for a seasoned sporting events manager to lead and oversee all PRFM Sports events from concept to execution. This role is the backbone of our operations — you'll manage timelines, coordinate vendors, liaise with venue partners, oversee on-site logistics, and ensure every event delivers a premium experience for athletes, families, and sponsors. You'll work cross-functionally with our marketing, partnerships, and coaching teams to build events that are seamless, scalable, and best-in-class. The ideal candidate thrives in fast-paced environments, brings strong organizational skills, and has a deep passion for sports and community building.",
+    requirements: [
+      'Minimum 2 years of experience in event management, preferably in sports',
+      'Proven ability to manage multiple events simultaneously',
+      'Strong vendor and stakeholder relationship management',
+      'Experience with budgeting, scheduling, and on-site operations',
+      'Excellent communication and leadership skills',
+    ],
+  },
+  {
+    type: 'CONTRACT',
+    title: 'VIDEOGRAPHER',
+    description: "Capture the energy, emotion, and intensity of live sporting events through high-quality video content. You'll be responsible for filming game highlights, conducting athlete and coach interviews, and producing polished recap videos for social media and promotional use. We need someone who understands sports storytelling — someone who knows when to zoom in on a celebration, capture a sideline moment, or frame a powerful interview. Your work will be central to how PRFM Sports shows up across digital platforms.",
+    requirements: [
+      'Demonstrated experience filming and editing sports content',
+      'Proficiency with professional camera equipment and editing software',
+      'Experience conducting on-camera interviews in live environments',
+      'Ability to deliver quick-turnaround highlight reels and social clips',
+      'Strong portfolio showcasing sports or event videography',
+    ],
+  },
+  {
+    type: 'PART-TIME',
+    title: 'SOCIAL MEDIA MANAGER',
+    description: "Own and grow the PRFM Sports presence across all social platforms. You'll develop content strategies, create engaging posts, manage community interactions, and drive brand awareness through creative, soccer-savvy storytelling. We need someone who lives and breathes social media — always on top of trends, platform updates, and what makes content go viral in the sports world. A deep knowledge of soccer culture is essential.",
+    requirements: [
+      'Savvy across Instagram, TikTok, X, Facebook, and YouTube',
+      'Creative mindset with strong visual and copywriting skills',
+      'Deep knowledge of soccer culture, trends, and community',
+      'Experience growing social audiences and driving engagement',
+      'Ability to plan, create, and schedule content independently',
+    ],
+  },
+  {
+    type: 'INTERNSHIP',
+    title: 'SUMMER INTERN',
+    description: "Get hands-on experience in sports management this summer. As a PRFM Sports intern, you'll be embedded in every aspect of our operation — helping run events, supporting promotional campaigns, assisting with athlete communications, and contributing to real projects that shape our growth. This internship is designed to be eligible for school credit, giving you the opportunity to earn academic hours while building a professional portfolio in the sports industry. Whether you're studying sports management, marketing, communications, or business, this is your chance to learn by doing alongside a fast-moving team.",
+    requirements: [
+      'Currently enrolled in a college or university program',
+      'Eligible to receive school credit for internship hours',
+      'Available for the full summer calendar (June–August)',
+      'Passion for sports, events, and community engagement',
+      'Self-starter with strong organizational and communication skills',
+    ],
+  },
+];
+---
+
+<Base
+  title="Careers at PRFM Sports — Join Our Team"
+  description="We're building something special. If you're passionate about sports, driven by impact, and ready to do meaningful work, we want to hear from you."
+>
+  <MinimalHeader />
+  <main class="careers">
+    <section class="careers-hero">
+      <span class="eyebrow">JOIN THE TEAM</span>
+      <h1 class="careers-title">CAREERS</h1>
+      <p class="careers-lede">
+        We're building something special. If you're passionate about sports, driven by impact, and ready to do meaningful work — we want to hear from you.
+      </p>
+    </section>
+
+    <section class="jobs">
+      {jobs.map(job => (
+        <div class="job-card">
+          <span class="job-type">{job.type}</span>
+          <h2 class="job-title">{job.title}</h2>
+          <p class="job-desc">{job.description}</p>
+          <ul class="job-reqs">
+            {job.requirements.map(r => <li>{r}</li>)}
+          </ul>
+          <a
+            href={`mailto:info@prfmsports.com?subject=${encodeURIComponent('Application: ' + job.title)}`}
+            class="job-apply"
+          >
+            APPLY NOW <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      ))}
+    </section>
+
+    <section class="careers-cta">
+      <h2 class="cta-title">DON'T SEE YOUR ROLE?</h2>
+      <p class="cta-desc">We're always looking for talented people. Send us your resume and tell us how you'd contribute.</p>
+      <a href="mailto:info@prfmsports.com?subject=General%20Application" class="cta-btn">GET IN TOUCH</a>
+    </section>
+  </main>
+  <Footer minimal />
+</Base>
+
+<style>
+  .careers-hero {
+    margin: 0 auto;
+    padding: 3rem 5rem 4rem;
+    max-width: 800px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .careers-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .careers-lede {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .jobs {
+    margin: 0 auto;
+    padding: 0 5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border-top: 1px solid var(--border);
+  }
+
+  .job-card {
+    background: var(--cream);
+    padding: 3rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .job-type {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: #0f1014;
+    background: var(--orange);
+    display: inline-block;
+    width: fit-content;
+    padding: 0.3rem 0.7rem;
+  }
+
+  .job-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .job-desc {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 760px;
+  }
+
+  .job-reqs {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .job-reqs li {
+    font-size: 0.92rem;
+    color: var(--ink);
+    padding-left: 1.1rem;
+    position: relative;
+  }
+
+  .job-reqs li::before {
+    content: '\25AA';
+    position: absolute;
+    left: 0;
+    color: var(--ink);
+    font-size: 0.55rem;
+    top: 0.4rem;
+  }
+
+  .job-apply {
+    align-self: flex-start;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    padding: 0.75rem 1.75rem;
+    background: var(--ink);
+    color: white;
+    transition: background 0.2s;
+  }
+
+  .job-apply:hover {
+    background: #303542;
+  }
+
+  .careers-cta {
+    margin: 0 auto;
+    padding: 4rem 5rem 5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .cta-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .cta-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 500px;
+  }
+
+  .cta-btn {
+    align-self: flex-start;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    padding: 0.85rem 2rem;
+    background: var(--orange);
+    color: #0f1014;
+    transition: background 0.2s;
+  }
+
+  .cta-btn:hover {
+    background: #b8f020;
+  }
+
+  @media (max-width: 768px) {
+    .careers-hero,
+    .jobs,
+    .careers-cta {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,379 @@
+---
+import Base from '../layouts/Base.astro';
+import MinimalHeader from '../components/MinimalHeader.astro';
+import Footer from '../components/Footer.astro';
+
+const approach = [
+  {
+    title: 'BUILT BY OPERATORS',
+    body: "We didn't start in a boardroom — we started on the field. Decades of competing, coaching, and building from the ground up fuel everything we do.",
+  },
+  {
+    title: 'ATHLETES FIRST',
+    body: 'Every decision we make centers on the athlete experience. From youth players to elite competitors, we build environments where talent thrives.',
+  },
+  {
+    title: 'MODERN EXECUTION',
+    body: 'Passion without structure leads to burnout. We bring precision operations, smart technology, and professional-grade systems to every venture.',
+  },
+  {
+    title: 'IMPACT BEYOND THE SCOREBOARD',
+    body: "Sports shape discipline, confidence, leadership, and community. We're here to make sure that impact reaches every athlete who steps on the field.",
+  },
+];
+
+const team = [
+  {
+    initial: 'M',
+    name: 'MORGAN',
+    bio: '20 years of experience in sports across every sector and level in soccer.',
+    href: '/team/morgan-gilliam',
+  },
+  {
+    initial: 'K',
+    name: 'KALEB',
+    bio: 'Focused on building complexes and facilities that actually matter to communities.',
+  },
+  {
+    initial: 'A',
+    name: 'AARON',
+    bio: 'The numbers guy. Ensuring every venture is financially sound and built to scale.',
+  },
+  {
+    initial: 'J',
+    name: 'JAREN',
+    bio: 'The marketing guru with a unique style and approach to attract the next generation of athlete.',
+  },
+];
+---
+
+<Base
+  title="About PRFM Sports — Sports Management & Consulting"
+  description="PRFM Sports was created to help build stronger sports organizations, experiences and opportunities."
+>
+  <MinimalHeader />
+  <main class="about">
+    <section class="about-hero">
+      <span class="eyebrow">ABOUT PRFM SPORTS</span>
+      <h1 class="about-title">EXPERIENCE ACROSS<br />THE SPORTS ECOSYSTEM.</h1>
+      <p class="about-lede">
+        PRFM Sports was created to help build stronger sports organizations, experiences and opportunities. We don't simply provide recommendations — we help our partners develop the strategy, build the program and execute the work.
+      </p>
+    </section>
+
+    <section class="who-how">
+      <div class="who-how-col">
+        <h2 class="col-heading">WHO WE ARE</h2>
+        <p>Our team brings experience across professional sports, youth sports, facility operations, event development, athlete training, sponsorships and sports technology.</p>
+        <p>That perspective allows us to understand both the business of sports and the needs of athletes and families — and to move between strategy and execution without losing either.</p>
+      </div>
+      <div class="who-how-col">
+        <h2 class="col-heading">HOW WE WORK</h2>
+        <p>Engagements range from focused consulting projects to ongoing management of organizations, events and sports properties. We start with the goal, build the plan and stay involved through implementation.</p>
+        <p>Whether you are improving an organization, launching an event, developing a facility or helping an athlete reach the next level, PRFM Sports can help turn your vision into a sustainable plan.</p>
+      </div>
+    </section>
+
+    <section class="approach">
+      <div class="section-heading">
+        <span class="eyebrow">OUR APPROACH</span>
+        <h2 class="section-title">HOW WE SHOW UP</h2>
+      </div>
+      <div class="approach-grid">
+        {approach.map(a => (
+          <div class="approach-cell">
+            <h3 class="approach-title">{a.title}</h3>
+            <p class="approach-body">{a.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="team">
+      <div class="section-heading">
+        <span class="eyebrow">THE PEOPLE</span>
+        <h2 class="section-title">OUR TEAM</h2>
+      </div>
+      <div class="team-grid">
+        {team.map(t => (
+          t.href ? (
+            <a href={t.href} class="team-card team-card--link">
+              <span class="team-avatar">{t.initial}</span>
+              <span class="team-name">{t.name}</span>
+              <span class="team-role">PARTNER</span>
+              <p class="team-bio">{t.bio}</p>
+              <span class="team-view">VIEW PROFILE &rarr;</span>
+            </a>
+          ) : (
+            <div class="team-card">
+              <span class="team-avatar">{t.initial}</span>
+              <span class="team-name">{t.name}</span>
+              <span class="team-role">PARTNER</span>
+              <p class="team-bio">{t.bio}</p>
+            </div>
+          )
+        ))}
+      </div>
+    </section>
+
+    <section class="about-cta">
+      <h2 class="about-cta-title">LET'S BUILD SOMETHING<br />TOGETHER.</h2>
+      <p class="about-cta-desc">Whether you're organizing a league, developing athletes, or launching an event — we'd love to connect.</p>
+      <a href="mailto:info@prfmsports.com" class="about-cta-btn">CONTACT US</a>
+    </section>
+  </main>
+  <Footer minimal />
+</Base>
+
+<style>
+  .about-hero,
+  .who-how,
+  .approach,
+  .team,
+  .about-cta {
+    margin: 0 auto;
+    padding: 5rem;
+  }
+
+  .about-hero {
+    max-width: 900px;
+    padding-bottom: 4rem;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .about-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.75rem;
+  }
+
+  .about-lede {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 680px;
+  }
+
+  .who-how {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    border-top: 1px solid var(--border);
+    padding-top: 4rem;
+  }
+
+  .who-how-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .col-heading {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+  }
+
+  .who-how-col p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .section-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .approach {
+    border-top: 1px solid var(--border);
+  }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .approach-cell {
+    background: var(--cream);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .approach-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .approach-body {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .team {
+    border-top: 1px solid var(--border);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .team-card {
+    background: var(--cream);
+    padding: 2.25rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    color: inherit;
+  }
+
+  .team-avatar {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--orange);
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .team-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+
+  .team-role {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+
+  .team-bio {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--muted);
+    flex: 1;
+  }
+
+  .team-view {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+  }
+
+  .team-card--link {
+    transition: background 0.2s;
+  }
+
+  .team-card--link:hover {
+    background: #f7f7f5;
+  }
+
+  .about-cta {
+    background: var(--ink);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .about-cta-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+  }
+
+  .about-cta-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.65);
+    max-width: 480px;
+  }
+
+  .about-cta-btn {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    padding: 0.85rem 2rem;
+    background: var(--orange);
+    color: #0f1014;
+    transition: background 0.2s;
+  }
+
+  .about-cta-btn:hover {
+    background: #b8f020;
+  }
+
+  @media (max-width: 900px) {
+    .about-hero,
+    .who-how,
+    .approach,
+    .team,
+    .about-cta {
+      padding: 3rem 1.5rem;
+    }
+
+    .who-how,
+    .approach-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

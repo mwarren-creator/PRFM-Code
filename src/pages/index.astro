@@ -3,66 +3,36 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import Marquee from '../components/Marquee.astro';
-import FeatureBlock from '../components/FeatureBlock.astro';
 import CTA from '../components/CTA.astro';
 import Footer from '../components/Footer.astro';
 
-const features = [
+const services = [
   {
     number: '001',
-    title: 'UTAH SOCCER PATHWAY PROGRAM',
-    description: 'A membership program for Utah players and families, built around clear development, measurable progress, and a direct route to collegiate soccer.',
-    bullets: [
-      'Personalized player pathway profile and annual assessment',
-      'Customized recruiting roadmap and college matching',
-      'Verified combine metrics benchmarked to college standards',
-      'Two tiers: self-service Plus and hands-on Elite Recruiting',
-    ],
-    ctaLabel: 'EXPLORE THE PATHWAY',
-    ctaHref: '/pathway',
+    title: 'YOUTH SPORTS CONSULTING',
+    description: 'Stronger clubs, leagues and events.',
+    linkLabel: 'LEARN MORE',
+    href: '/youth-sports-consulting',
   },
   {
     number: '002',
-    title: 'TOTAL PLAYER TRAINING',
-    description: 'High-level training sessions run by experienced coaches, designed for players who want to develop their game beyond the club season.',
-    bullets: [
-      'SESSION 01: June 15 – July 8',
-      'SESSION 02: July 13 – Aug 5',
-      'SESSION 03: August 10 – Sept 2',
-      'Peak Athlete Facility · 86 E 800 N, Orem — 4 Sessions/Month — $75',
-    ],
-    ctaLabel: 'REGISTER NOW',
-    ctaHref: 'https://buy.stripe.com/5kQ00jfdo4rnd1t9iU0x207',
-    flip: true,
-    dark: true,
+    title: 'ATHLETE ADVISORY',
+    description: 'Recruiting and development guidance.',
+    linkLabel: 'LEARN MORE',
+    href: '/athlete-advisory',
   },
   {
     number: '003',
-    title: 'HIGH SCHOOL GIRLS SOCCER ALL STAR GAME',
-    description: "Utah County's top high school girls soccer players go head-to-head in a premier showcase. One night. College coaches in attendance. Bragging rights on the line.",
-    bullets: [
-      '17 players per team, selected by our committee',
-      'Custom game-day jersey and loaded swag bag for every player',
-      'College coaches scouting and evaluating in real time',
-      'Professional photo and video coverage for recruiting',
-    ],
-    ctaLabel: 'CHECK OUT THE ALL STAR EVENT',
-    ctaHref: '/events/girls-all-star',
+    title: 'SPORTS PROPERTIES',
+    description: 'Facility programming and operations.',
+    linkLabel: 'LEARN MORE',
+    href: '/sports-property-management',
   },
   {
     number: '004',
-    title: 'HIGH SCHOOL BOYS SOCCER ALL STAR GAME',
-    description: "Utah County's top high school boys soccer players battle in a premier showcase. One night. College coaches in attendance. Bragging rights on the line.",
-    bullets: [
-      '17 players per team, selected by our committee',
-      'Custom game-day jersey and loaded swag bag for every player',
-      'College coaches scouting and evaluating in real time',
-      'Professional photo and video coverage for recruiting',
-    ],
-    ctaLabel: 'CHECK OUT THE BOYS ALL STAR EVENT',
-    ctaHref: '/events/boys-all-star',
-    flip: true,
-    dark: true,
+    title: 'SPORTS TECHNOLOGY',
+    description: 'Software strategy and product work.',
+    comingSoon: true,
   },
 ];
 ---
@@ -72,19 +42,146 @@ const features = [
   <main>
     <Hero />
     <Marquee />
-    {features.map(f => (
-      <FeatureBlock
-        number={f.number}
-        title={f.title}
-        description={f.description}
-        bullets={f.bullets}
-        ctaLabel={f.ctaLabel}
-        ctaHref={f.ctaHref}
-        flip={f.flip}
-        dark={f.dark}
-      />
-    ))}
+
+    <section class="what-we-do">
+      <div class="what-we-do-inner">
+        <div class="section-heading">
+          <span class="section-eyebrow">WHAT WE DO</span>
+          <h2 class="section-title">FOUR WAYS WE WORK</h2>
+        </div>
+
+        <div class="services-grid">
+          {services.map(s => (
+            <div class="service-cell">
+              <span class="service-num">{s.number}</span>
+              <h3 class="service-title">{s.title}</h3>
+              <p class="service-desc">{s.description}</p>
+              {s.comingSoon ? (
+                <span class="service-soon">COMING SOON</span>
+              ) : (
+                <a href={s.href} class="service-link">{s.linkLabel} &rarr;</a>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <CTA />
   </main>
   <Footer />
 </Base>
+
+<style>
+  .what-we-do {
+    background: var(--cream);
+  }
+
+  .what-we-do-inner {
+    margin: 0 auto;
+    padding: 6rem 5rem;
+  }
+
+  .section-heading {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-eyebrow {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+  }
+
+  .section-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .service-cell {
+    background: var(--cream);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    min-height: 260px;
+  }
+
+  .service-num {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: rgba(29, 31, 38, 0.5);
+  }
+
+  .service-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .service-desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--muted);
+    flex: 1;
+  }
+
+  .service-link {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--ink);
+    transition: color 0.2s;
+    align-self: flex-start;
+  }
+
+  .service-link:hover {
+    color: var(--muted);
+  }
+
+  .service-soon {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+  }
+
+  @media (max-width: 900px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .what-we-do-inner {
+      padding: 4rem 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

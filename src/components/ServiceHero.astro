@@ -1,0 +1,132 @@
+---
+interface Props {
+  label: string;
+  title: string;
+  subheading: string;
+  paragraphs: string[];
+}
+
+const { label, title, subheading, paragraphs } = Astro.props;
+---
+
+<section class="shero">
+  <div class="shero-bg" aria-hidden="true">
+    <div class="shero-blob shero-blob--1"></div>
+    <div class="shero-blob shero-blob--2"></div>
+    <div class="shero-blob shero-blob--3"></div>
+  </div>
+
+  <div class="shero-inner">
+    <span class="shero-label">{label}</span>
+    <h1 class="shero-title">{title}</h1>
+    <p class="shero-subhead">{subheading}</p>
+    <div class="shero-copy">
+      {paragraphs.map(p => <p>{p}</p>)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .shero {
+    position: relative;
+    padding-top: 60px;
+    overflow: clip;
+    background: #ffffff;
+  }
+
+  .shero-bg {
+    position: absolute;
+    inset: 0;
+  }
+
+  .shero-blob {
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .shero-blob--1 {
+    top: -20%;
+    left: -10%;
+    width: 55vw;
+    height: 55vw;
+    background: var(--orange);
+    opacity: 0.28;
+    filter: blur(100px);
+  }
+
+  .shero-blob--2 {
+    top: 15%;
+    right: -15%;
+    width: 45vw;
+    height: 45vw;
+    background: var(--ink);
+    opacity: 0.08;
+    filter: blur(120px);
+  }
+
+  .shero-blob--3 {
+    bottom: -30%;
+    left: 20%;
+    width: 40vw;
+    height: 40vw;
+    background: var(--orange);
+    opacity: 0.14;
+    filter: blur(110px);
+  }
+
+  .shero-inner {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    padding: 4rem 5rem 5rem;
+    max-width: 900px;
+  }
+
+  .shero-label {
+    display: inline-block;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .shero-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+  }
+
+  .shero-subhead {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: var(--ink);
+    margin-bottom: 1.75rem;
+  }
+
+  .shero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 640px;
+  }
+
+  .shero-copy p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  @media (max-width: 768px) {
+    .shero-inner {
+      padding: 3rem 1.5rem 3.5rem;
+    }
+  }
+</style>

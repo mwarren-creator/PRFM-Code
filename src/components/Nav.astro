@@ -1,15 +1,11 @@
 ---
 const navLinks = [
+  { label: 'HOME', href: '/' },
+  { label: 'CONSULTING', href: '/youth-sports-consulting' },
+  { label: 'ADVISORY', href: '/athlete-advisory' },
+  { label: 'PROPERTY MANAGEMENT', href: '/sports-property-management' },
   { label: 'ABOUT', href: '/about' },
-  { label: 'SERVICES', href: '/services' },
-  { label: 'PATHWAY', href: '/pathway' },
-  { label: 'TRAINING', href: '/training' },
-  { label: 'PROJECTS', href: '/projects' },
-];
-
-const eventLinks = [
-  { label: 'Girls All Star Game', href: '/events/girls-all-star' },
-  { label: 'Boys All Star Game', href: '/events/boys-all-star' },
+  { label: 'CONTACT', href: '/contact' },
 ];
 ---
 
@@ -20,24 +16,12 @@ const eventLinks = [
     </a>
 
     <nav class="nav-links" aria-label="Main navigation">
-      <div class="nav-dropdown">
-        <button class="nav-link nav-link--dropdown" aria-expanded="false" aria-haspopup="true">
-          EVENTS <span class="nav-caret" aria-hidden="true">&#8964;</span>
-        </button>
-        <div class="nav-dropdown-menu" role="menu">
-          {eventLinks.map(l => (
-            <a href={l.href} class="nav-dropdown-item" role="menuitem">{l.label}</a>
-          ))}
-        </div>
-      </div>
-
-      <a href="/about" class="nav-link">ABOUT</a>
-      <a href="/pathway" class="nav-link">PATHWAY</a>
-      <a href="/training" class="nav-link">TRAINING</a>
-      <a href="/projects" class="nav-link">PROJECTS</a>
+      {navLinks.map(l => (
+        <a href={l.href} class="nav-link">{l.label}</a>
+      ))}
     </nav>
 
-    <a href="/pathway" class="nav-cta">GET STARTED</a>
+    <a href="/contact" class="nav-cta">WORK WITH PRFM</a>
 
     <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -45,12 +29,10 @@ const eventLinks = [
   </div>
 
   <div class="nav-mobile-menu" aria-hidden="true">
-    <a href="/about" class="nav-mobile-link">ABOUT</a>
-    <a href="/events" class="nav-mobile-link">EVENTS</a>
-    <a href="/pathway" class="nav-mobile-link">PATHWAY</a>
-    <a href="/training" class="nav-mobile-link">TRAINING</a>
-    <a href="/projects" class="nav-mobile-link">PROJECTS</a>
-    <a href="/pathway" class="nav-mobile-cta">GET STARTED</a>
+    {navLinks.map(l => (
+      <a href={l.href} class="nav-mobile-link">{l.label}</a>
+    ))}
+    <a href="/contact" class="nav-mobile-cta">WORK WITH PRFM</a>
   </div>
 </header>
 
@@ -66,7 +48,6 @@ const eventLinks = [
   }
 
   .nav-inner {
-    
     margin: 0 auto;
     padding: 0 5rem;
     height: 60px;
@@ -104,67 +85,20 @@ const eventLinks = [
     color: rgba(255,255,255,0.85);
     font-family: 'Archivo Black', sans-serif;
     font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    padding: 0.5rem 0.75rem;
-    border-radius: 2px;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    padding: 0.5rem 0.6rem;
     transition: color 0.2s;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
+    white-space: nowrap;
   }
 
   .nav-link:hover {
     color: #fff;
   }
 
-  .nav-caret {
-    font-size: 0.7rem;
-    opacity: 0.7;
-  }
-
-  .nav-dropdown {
-    position: relative;
-  }
-
-  .nav-dropdown-menu {
-    display: none;
-    position: absolute;
-    top: calc(100% + 4px);
-    left: 0;
-    background: var(--nav-bg);
-    border: 1px solid rgba(255,255,255,0.12);
-    min-width: 200px;
-    padding: 0.5rem 0;
-  }
-
-  .nav-dropdown:hover .nav-dropdown-menu,
-  .nav-dropdown:focus-within .nav-dropdown-menu {
-    display: block;
-  }
-
-  .nav-dropdown-item {
-    display: block;
-    padding: 0.6rem 1.25rem;
-    color: rgba(255,255,255,0.8);
-    font-family: 'Archivo Black', sans-serif;
-    font-weight: 600;
-    font-size: 0.8rem;
-    letter-spacing: 0.06em;
-    transition: background 0.15s, color 0.15s;
-  }
-
-  .nav-dropdown-item:hover {
-    background: rgba(255,255,255,0.06);
-    color: #fff;
-  }
-
   .nav-cta {
     margin-left: auto;
-    background: #cfff3d;
+    background: var(--orange);
     color: #0f1014;
     font-family: 'Archivo Black', sans-serif;
     font-weight: 800;
@@ -220,7 +154,7 @@ const eventLinks = [
   .nav-mobile-cta {
     display: inline-block;
     margin-top: 1.25rem;
-    background: #cfff3d;
+    background: var(--orange);
     color: #0f1014;
     font-family: 'Archivo Black', sans-serif;
     font-weight: 800;
@@ -230,7 +164,18 @@ const eventLinks = [
     align-self: flex-start;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
+    .nav-inner {
+      padding: 0 2rem;
+    }
+
+    .nav-link {
+      font-size: 0.68rem;
+      padding: 0.5rem 0.4rem;
+    }
+  }
+
+  @media (max-width: 900px) {
     .nav-links,
     .nav-cta {
       display: none;

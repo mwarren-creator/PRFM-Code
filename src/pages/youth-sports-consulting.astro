@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import FeatureBlock from '../components/FeatureBlock.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Youth Sports Consulting & Management | PRFM Sports"
+  description="PRFM Sports helps clubs, leagues, academies and training organizations improve how they operate, grow and serve their athletes."
+>
+  <Nav />
+  <main>
+    <ServiceHero
+      label="SERVICE 001"
+      title="YOUTH SPORTS CONSULTING & MANAGEMENT"
+      subheading="Build a Stronger Youth Sports Organization"
+      paragraphs={[
+        'PRFM Sports helps clubs, leagues, academies and training organizations improve how they operate, grow and serve their athletes.',
+        'We work alongside owners, directors, boards and community partners to identify opportunities, solve operational challenges and develop sustainable growth strategies. Our role can range from focused consulting projects to ongoing organizational management.',
+      ]}
+    />
+
+    <FeatureBlock
+      number="001 / ORGANIZATIONS"
+      title="CLUBS, LEAGUES & ACADEMIES"
+      intro="Strategy and hands-on management for the organizations serving athletes every day."
+      description="From strategic planning to day-to-day operations, we help organizations put the right structure, systems and people in place to grow with confidence."
+      bullets={[
+        'Organizational strategy and planning',
+        'Club and league management',
+        'Program development',
+        'Registration and revenue growth',
+        'Operational systems and processes',
+        'Branding and marketing strategy',
+        'Sponsorship development',
+        'Staff and leadership structure',
+        'Partnership and acquisition consulting',
+        'Technology implementation',
+        'Financial modeling and growth planning',
+      ]}
+      ctaLabel="STRENGTHEN YOUR ORGANIZATION"
+      ctaHref="/contact"
+    />
+
+    <FeatureBlock
+      number="002 / EVENTS"
+      title="YOUTH SPORTS EVENT MANAGEMENT"
+      intro="From an Initial Idea to a Successful Event"
+      description="PRFM Sports creates, manages and promotes sports events designed to bring athletes, families, organizations and communities together. Whether developing a new tournament, combine, showcase, camp or community event, we manage the details required to turn the concept into a professional experience."
+      bullets={[
+        'Event concept development',
+        'Tournaments, camps and combines',
+        'Showcases and all-star events',
+        'Event branding and marketing',
+        'Registration strategy and management',
+        'Venue and facility coordination',
+        'Scheduling and event operations',
+        'Sponsorship sales and activation',
+        'Staffing and vendor management',
+        'Social media and promotional campaigns',
+        'Post-event reporting and growth strategy',
+      ]}
+      closing="PRFM Sports can manage an entire event or support specific areas where additional expertise and resources are needed."
+      ctaLabel="BUILD AN EVENT WITH US"
+      ctaHref="/contact"
+      flip
+    />
+
+    <CTA />
+  </main>
+  <Footer />
+</Base>

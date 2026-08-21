@@ -2,37 +2,64 @@
 interface Props {
   number: string;
   title: string;
+  tag?: string;
+  intro?: string;
   description: string;
   bullets: string[];
-  ctaLabel: string;
-  ctaHref: string;
+  bulletsHeading?: string;
+  closing?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
   flip?: boolean;
   dark?: boolean;
 }
 
-const { number, title, description, bullets, ctaLabel, ctaHref, flip = false, dark = false } = Astro.props;
+const {
+  number,
+  title,
+  tag,
+  intro,
+  description,
+  bullets,
+  bulletsHeading = 'SERVICES INCLUDE',
+  closing,
+  ctaLabel,
+  ctaHref,
+  flip = false,
+  dark = false,
+} = Astro.props;
 ---
 
 <section class:list={['feature', { 'feature--dark': dark }]}>
   <div class:list={['feature-inner', { 'feature-inner--flip': flip }]}>
     <div class="feature-left">
       <span class="feature-num">{number}</span>
-      <h2 class="feature-title">{title}</h2>
+      <h2 class="feature-title">
+        {title}
+        {tag && <span class="feature-tag">{tag}</span>}
+      </h2>
     </div>
 
     <div class="feature-right">
+      {intro && <p class="feature-intro">{intro}</p>}
       <p class="feature-desc">{description}</p>
-      <ul class="feature-bullets">
-        {bullets.map(b => (
-          <li class="feature-bullet">
-            <span class="bullet-dot" aria-hidden="true">&#9642;</span>
-            {b}
-          </li>
-        ))}
-      </ul>
-      <a href={ctaHref} class="feature-cta">
-        {ctaLabel} <span class="feature-arrow" aria-hidden="true">&nbsp;&rarr;</span>
-      </a>
+      <div class="feature-bullets-block">
+        <span class="feature-bullets-heading">{bulletsHeading}</span>
+        <ul class="feature-bullets">
+          {bullets.map(b => (
+            <li class="feature-bullet">
+              <span class="bullet-dot" aria-hidden="true">&#9642;</span>
+              {b}
+            </li>
+          ))}
+        </ul>
+      </div>
+      {closing && <p class="feature-closing">{closing}</p>}
+      {ctaLabel && ctaHref && (
+        <a href={ctaHref} class="feature-cta">
+          {ctaLabel} <span class="feature-arrow" aria-hidden="true">&nbsp;&rarr;</span>
+        </a>
+      )}
     </div>
   </div>
 </section>
@@ -48,7 +75,6 @@ const { number, title, description, bullets, ctaLabel, ctaHref, flip = false, da
   }
 
   .feature-inner {
-    
     margin: 0 auto;
     padding: 6rem 5rem;
     display: grid;
@@ -69,6 +95,8 @@ const { number, title, description, bullets, ctaLabel, ctaHref, flip = false, da
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    position: sticky;
+    top: 6rem;
   }
 
   .feature-num {
@@ -82,11 +110,26 @@ const { number, title, description, bullets, ctaLabel, ctaHref, flip = false, da
   .feature-title {
     font-family: 'Archivo Black', sans-serif;
     font-weight: 900;
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    line-height: 0.92;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    line-height: 0.95;
     letter-spacing: -0.01em;
     color: var(--ink);
     text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .feature-tag {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--orange);
+    color: #0f1014;
+    padding: 0.35rem 0.75rem;
   }
 
   .feature-right {
@@ -96,10 +139,38 @@ const { number, title, description, bullets, ctaLabel, ctaHref, flip = false, da
     padding-top: 1.25rem;
   }
 
+  .feature-intro {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+
   .feature-desc {
     font-size: 1rem;
     line-height: 1.65;
     color: var(--muted);
+  }
+
+  .feature-closing {
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+
+  .feature-bullets-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .feature-bullets-heading {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    color: var(--ink);
   }
 
   .feature-bullets {
@@ -154,6 +225,10 @@ const { number, title, description, bullets, ctaLabel, ctaHref, flip = false, da
 
     .feature-inner--flip {
       direction: ltr;
+    }
+
+    .feature-left {
+      position: static;
     }
   }
 </style>

@@ -1,0 +1,227 @@
+---
+import Base from '../layouts/Base.astro';
+import MinimalHeader from '../components/MinimalHeader.astro';
+import Footer from '../components/Footer.astro';
+
+const partners = [
+  {
+    name: 'PostGame AI',
+    description: 'PostGame AI transforms postgame voice recaps into structured player feedback, coaching insights, and season-long development tools — automatically. Built for coaches who want to drive real player growth without extra admin work.',
+    url: 'https://getpostgame.ai',
+  },
+  {
+    name: 'The Soccer Platform',
+    description: "Utah's premier parent and player membership for competitive soccer. The Soccer Platform delivers elite physical and mental training, age-specific guidance, and a full development roadmap for aspiring athletes at every level.",
+    url: 'https://thesoccerplatform.com',
+  },
+  {
+    name: 'SponsorCX',
+    description: 'The leader in sponsorship management software. SponsorCX helps sports properties efficiently manage all their sponsorships while maintaining seamless collaboration with brand partners — trusted by major programs nationwide.',
+    url: 'https://sponsorcx.com',
+  },
+  {
+    name: 'UVU Athletics',
+    description: 'Utah Valley University Athletics — home of the Wolverines. UVU fields competitive NCAA Division I programs and serves as a hub for collegiate-level sports development in Utah County.',
+    url: 'https://gouvu.com',
+  },
+  {
+    name: 'Vineyard Parks & Rec',
+    description: "Vineyard City Parks and Recreation provides community sports programming, premier park facilities, and recreational opportunities for families across one of Utah's fastest-growing cities.",
+    url: 'https://vineyardutah.gov',
+  },
+  {
+    name: 'NUCS',
+    description: 'North Utah County Soccer has served the community for over 30 years, offering recreational, challenger, and competitive club soccer programs for youth players of all ages and skill levels.',
+    url: 'https://northutahcountysoccer.com',
+  },
+  {
+    name: 'Better Goalkeeping',
+    description: 'Specialized goalkeeper training focused on developing physical strength, technical skills, tactical understanding, and mental power for keepers at all levels of play.',
+    url: 'https://bettergoalkeeping.com',
+  },
+  {
+    name: 'Helm Ventures',
+    description: 'A strategic venture partner supporting growth-stage companies and innovative sports initiatives. Helm Ventures brings operational expertise and investment acumen to help brands scale with purpose.',
+    url: 'https://www.linkedin.com/company/helmventures',
+  },
+];
+---
+
+<Base
+  title="Partners — PRFM Sports"
+  description="PRFM Sports works alongside industry-leading brands and platforms to deliver the best experiences in youth sports."
+>
+  <MinimalHeader />
+  <main class="partners">
+    <section class="partners-hero">
+      <span class="eyebrow">OUR NETWORK</span>
+      <h1 class="partners-title">PARTNERS</h1>
+      <p class="partners-lede">
+        We work alongside industry-leading brands and platforms to deliver the best experiences in youth sports.
+      </p>
+    </section>
+
+    <section class="partners-callout">
+      <h2 class="callout-title">WANT TO BE A PARTNER?</h2>
+      <p class="callout-desc">We're always looking for brands that share our mission. Let's build something together.</p>
+      <a href="mailto:info@prfmsports.com?subject=Partnership%20Inquiry" class="callout-btn">CONTACT US</a>
+    </section>
+
+    <section class="partners-grid">
+      {partners.map(p => (
+        <div class="partner-card">
+          <h3 class="partner-name">{p.name}</h3>
+          <p class="partner-desc">{p.description}</p>
+          <a href={p.url} target="_blank" rel="noopener noreferrer" class="partner-link">
+            VISIT WEBSITE
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+        </div>
+      ))}
+    </section>
+  </main>
+  <Footer minimal />
+</Base>
+
+<style>
+  .partners-hero {
+    margin: 0 auto;
+    padding: 3rem 5rem 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
+  }
+
+  .partners-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .partners-lede {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--muted);
+    max-width: 560px;
+  }
+
+  .partners-callout {
+    margin: 0 auto;
+    padding: 3rem 5rem;
+    background: var(--ink);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .callout-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    letter-spacing: -0.01em;
+  }
+
+  .callout-desc {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 440px;
+  }
+
+  .callout-btn {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 800;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    padding: 0.85rem 2rem;
+    background: var(--orange);
+    color: #0f1014;
+    transition: background 0.2s;
+  }
+
+  .callout-btn:hover {
+    background: #b8f020;
+  }
+
+  .partners-grid {
+    margin: 0 auto;
+    padding: 5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .partner-card {
+    background: var(--cream);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .partner-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    color: var(--ink);
+  }
+
+  .partner-desc {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--muted);
+    flex: 1;
+  }
+
+  .partner-link {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    transition: color 0.2s;
+  }
+
+  .partner-link:hover {
+    color: var(--muted);
+  }
+
+  @media (max-width: 900px) {
+    .partners-hero,
+    .partners-callout,
+    .partners-grid {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .partners-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

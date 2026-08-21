@@ -1,10 +1,5 @@
 ---
-interface Props {
-  text?: string;
-}
-const { text = '25% OFF OUR PLAYER PATHWAY PROGRAM' } = Astro.props;
-
-const items = Array(8).fill(text);
+const items = ['ORGANIZATIONS', 'EVENTS', 'FACILITIES', 'ATHLETE PATHWAYS', 'SPONSORSHIPS', 'SPORTS TECHNOLOGY'];
 ---
 
 <div class="marquee" aria-hidden="true">
@@ -30,13 +25,13 @@ const items = Array(8).fill(text);
     background: var(--cream);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
-    padding: 0.65rem 0;
+    padding: 1.5rem 0;
   }
 
   .marquee-inner {
     display: flex;
     white-space: nowrap;
-    animation: marquee 28s linear infinite;
+    animation: marquee 32s linear infinite;
   }
 
   @keyframes marquee {
@@ -45,20 +40,20 @@ const items = Array(8).fill(text);
   }
 
   .marquee-item {
-    font-family: 'Barlow Condensed', sans-serif;
+    font-family: 'Archivo Black', sans-serif;
     font-weight: 700;
-    font-size: 0.8rem;
-    letter-spacing: 0.12em;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
     color: var(--muted);
-    padding: 0 1.5rem;
+    padding: 0 1.75rem;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.75rem;
   }
 
   .marquee-dot {
-    color: var(--ink);
-    font-size: 0.5rem;
+    color: var(--orange);
+    font-size: 0.55rem;
   }
 
   @media (prefers-reduced-motion: reduce) {

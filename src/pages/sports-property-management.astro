@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import FeatureBlock from '../components/FeatureBlock.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Sports Property Management | PRFM Sports"
+  description="PRFM Sports helps sports facilities increase participation, improve operations, add sponsorship revenue and keep the facility and properties top notch."
+>
+  <Nav />
+  <main>
+    <ServiceHero
+      label="SERVICE 003"
+      title="SPORTS PROPERTIES MANAGEMENT"
+      subheading="Better Facilities and More Sponsorship — Create Better Sports Experiences"
+      paragraphs={[
+        'PRFM Sports helps sports facilities increase participation, improve operations, add sponsorship revenue and keep the facility and properties top notch.',
+        'We work with facility owners, schools, municipalities, universities and private partners to develop programming, manage daily operations and maximize the value of their sports spaces — and to provide all services to sponsors as needed.',
+      ]}
+    />
+
+    <FeatureBlock
+      number="001 / FACILITIES"
+      title="PROGRAMMING, OPERATIONS & REVENUE"
+      intro="Turning underused sports spaces into active, professionally managed destinations."
+      description="From scheduling and staffing to sponsorship and expansion planning, we take on the work required to make a facility perform for athletes, communities and owners."
+      bullets={[
+        'Facility programming and scheduling',
+        'Operational planning and management',
+        'Revenue strategy',
+        'Rental and utilization growth',
+        'League, tournament and camp development',
+        'Sponsorship and signage opportunities',
+        'Staffing and vendor coordination',
+        'Community and organizational partnerships',
+        'Facility expansion planning',
+        'Financial projections and feasibility analysis',
+        'Public-private partnership development',
+      ]}
+      closing="Our goal is to transform underused sports spaces into active, professionally managed destinations for athletes and communities."
+      ctaLabel="MAXIMIZE YOUR FACILITY"
+      ctaHref="/contact"
+    />
+
+    <CTA />
+  </main>
+  <Footer />
+</Base>

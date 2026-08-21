@@ -1,0 +1,80 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import FeatureBlock from '../components/FeatureBlock.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Base
+  title="Athlete Advisory & College Recruiting | PRFM Sports"
+  description="PRFM Sports helps athletes and families make better decisions about development, team placement, exposure and college recruiting."
+>
+  <Nav />
+  <main>
+    <ServiceHero
+      label="SERVICE 002"
+      title="ATHLETE ADVISORY & COLLEGE RECRUITING"
+      subheading="Helping Athletes Build the Right Pathway"
+      paragraphs={[
+        'The youth sports journey can be complicated. PRFM Sports helps athletes and families make better decisions about development, team placement, exposure and college recruiting.',
+        'Our approach is honest, personalized and focused on finding the right opportunity for each athlete — not simply the most recognizable name or program.',
+      ]}
+    />
+
+    <FeatureBlock
+      number="001 / DEVELOPMENT"
+      title="YOUTH PLAYER CONSULTING"
+      intro="Clear guidance on development, placement and goals."
+      description="We evaluate where an athlete is today, define where they want to go and build a realistic plan to get there — with parents fully informed along the way."
+      bullets={[
+        'Individual player evaluations',
+        'Development planning',
+        'Club and team placement guidance',
+        'Athletic goal setting',
+        'Performance and pathway assessments',
+        'Parent education and consulting',
+      ]}
+    />
+
+    <FeatureBlock
+      number="002 / RECRUITING"
+      title="COLLEGE RECRUITING"
+      intro="A personalized strategy built around athletic, academic and financial fit."
+      description="We help athletes identify the right college targets, present themselves professionally and stay accountable to the recruiting timeline."
+      bullets={[
+        'Personalized recruiting strategy',
+        'College identification and matching',
+        'Athletic, academic and financial fit',
+        'Highlight video evaluation',
+        'Player profiles and recruiting materials',
+        'Coach communication guidance',
+        'Showcase and ID camp planning',
+        'Recruiting timelines and accountability',
+      ]}
+      flip
+    />
+
+    <FeatureBlock
+      number="003 / NIL"
+      title="NIL MANAGEMENT"
+      tag="COMING SOON"
+      description="PRFM Sports is developing NIL advisory and management services to help college athletes understand, build and responsibly monetize their personal brands."
+      bulletsHeading="FUTURE SERVICES WILL INCLUDE"
+      bullets={[
+        'Personal brand development',
+        'Sponsorship and partnership opportunities',
+        'Social media strategy',
+        'Contract and opportunity coordination',
+        'Athlete marketing',
+        'Long-term career planning',
+      ]}
+      ctaLabel="START YOUR ATHLETE PATHWAY"
+      ctaHref="/contact"
+    />
+
+    <CTA />
+  </main>
+  <Footer />
+</Base>
