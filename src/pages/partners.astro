@@ -164,8 +164,7 @@ const partners = [
   }
 
   .partners-grid {
-    margin: 0 auto;
-    padding: 5rem;
+    margin: 5rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1px;
@@ -214,14 +213,14 @@ const partners = [
 
   @media (max-width: 900px) {
     .partners-hero,
-    .partners-callout,
-    .partners-grid {
+    .partners-callout {
       padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
 
     .partners-grid {
       grid-template-columns: 1fr;
+      margin: 3rem 1.5rem;
     }
   }
 </style>

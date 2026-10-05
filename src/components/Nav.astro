@@ -4,6 +4,7 @@ const navLinks = [
   { label: 'CONSULTING', href: '/youth-sports-consulting' },
   { label: 'ADVISORY', href: '/athlete-advisory' },
   { label: 'PROPERTY MANAGEMENT', href: '/sports-property-management' },
+  { label: 'SOCCER TRAINING', href: '/soccer-training' },
   { label: 'ABOUT', href: '/about' },
   { label: 'CONTACT', href: '/contact' },
 ];
@@ -164,18 +165,14 @@ const navLinks = [
     align-self: flex-start;
   }
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1440px) {
     .nav-inner {
       padding: 0 2rem;
-    }
-
-    .nav-link {
-      font-size: 0.68rem;
-      padding: 0.5rem 0.4rem;
+      gap: 1.5rem;
     }
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1280px) {
     .nav-links,
     .nav-cta {
       display: none;

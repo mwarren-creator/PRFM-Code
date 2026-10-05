@@ -101,7 +101,6 @@ const jobs = [
   .careers-hero {
     margin: 0 auto;
     padding: 3rem 5rem 4rem;
-    max-width: 800px;
   }
 
   .eyebrow {
@@ -127,11 +126,11 @@ const jobs = [
     font-size: 1.1rem;
     line-height: 1.7;
     color: var(--muted);
+    max-width: 820px;
   }
 
   .jobs {
-    margin: 0 auto;
-    padding: 0 5rem 2rem;
+    margin: 0 5rem 2rem;
     display: flex;
     flex-direction: column;
     gap: 1px;
@@ -254,10 +253,14 @@ const jobs = [
 
   @media (max-width: 768px) {
     .careers-hero,
-    .jobs,
     .careers-cta {
       padding-left: 1.5rem;
       padding-right: 1.5rem;
+    }
+
+    .jobs {
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
     }
   }
 </style>

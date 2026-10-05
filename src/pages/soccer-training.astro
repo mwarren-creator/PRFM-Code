@@ -1,0 +1,506 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import ServiceHero from '../components/ServiceHero.astro';
+import Footer from '../components/Footer.astro';
+
+const STRIPE_LINK = 'https://buy.stripe.com/aFacN56GSbTP7H90Mo0x20a';
+const sessionHref = (id: string) => `${STRIPE_LINK}?client_reference_id=${id}`;
+
+const access = [
+  {
+    icon: 'clipboard',
+    title: 'PROGRAM DETAILS',
+    body: "Supplemental training for competitive club players. Most players are willing to work hard, but they and their parents don't know the best way to do it. Our detailed program will help you develop into a Total Soccer Player.",
+  },
+  {
+    icon: 'zap',
+    title: 'SOCCER PERFORMANCE',
+    body: 'Soccer-specific workouts, plyometrics, speed work, strength work and much more to become faster and more explosive on the field.',
+  },
+  {
+    icon: 'target',
+    title: 'BALL MASTERY',
+    body: 'We will challenge every player at all levels to master the ball. Increase juggling, improve first touch, understand the speed and weight of passes, and improve decision making along the way.',
+  },
+  {
+    icon: 'video',
+    title: 'GAME EVALUATION',
+    body: 'ADD-ON: Upload a full game video each month and have a professional coach and trainer break it down for you. Get personalized feedback on your game, your game IQ, or any other technique.',
+  },
+];
+
+const sessions = [
+  {
+    id: 'session-1',
+    number: 'SESSION 01',
+    dates: 'NOV. 9 – DEC. 21',
+    body: 'Improve your technical ability, speed, agility and quickness to compete at a higher level in the upcoming season.',
+  },
+  {
+    id: 'session-2',
+    number: 'SESSION 02',
+    dates: 'DEC. 28 – FEB. 8',
+    body: 'Develop more power and explosiveness in soccer-specific movements while improving your technical skills with the ball.',
+  },
+  {
+    id: 'session-3',
+    number: 'SESSION 03',
+    dates: 'FEB. 15 – MARCH 29',
+    body: 'In-season focus on first touch, head-up decision making, speed of play and quick close touches for in-game scenarios.',
+  },
+];
+
+const groups = [
+  { ages: 'AGES 11–12', time: '4:00 – 5:00 PM', highlight: false },
+  { ages: 'AGES 9–10', time: '5:00 – 6:00 PM', highlight: true },
+];
+
+const icons: Record<string, string> = {
+  clipboard:
+    '<rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/>',
+  zap: '<path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/>',
+  target: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+  video:
+    '<path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/>',
+  calendar: '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/>',
+  clock: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+  pin: '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+};
+---
+
+<Base
+  title="Soccer Training | PRFM Sports"
+  description="Train with the top trainers in Utah County. Thousand-touch ball mastery and soccer-specific performance training for club players ages 9–12."
+>
+  <Nav />
+  <main>
+    <ServiceHero
+      label="TOTAL PLAYER TRAINING PROGRAM"
+      title="JOIN TODAY TO IMPROVE YOUR SKILL & SAQ"
+      subheading="Spots are limited — sign up early to secure your place before sessions fill."
+      paragraphs={[
+        'Train with the top trainers in Utah County. Improve technically with our thousand-touch ball mastery curriculum and increase your speed, explosiveness, power and core strength with soccer-specific performance training.',
+      ]}
+    >
+      <div class="register-row">
+        <a href="#sessions" class="register-btn">
+          REGISTER NOW <span aria-hidden="true">&rarr;</span>
+        </a>
+        <span class="register-note">SIGN UP EARLY — LIMITED SPACE AVAILABLE</span>
+      </div>
+    </ServiceHero>
+
+    <section class="block">
+      <span class="eyebrow">WHAT YOU'LL ACCESS</span>
+      <h2 class="block-title">A PROGRAM WITH EVERYTHING YOU NEED TO SUCCEED</h2>
+      <div class="access-grid">
+        {access.map(a => (
+          <div class="card access-card">
+            <svg class="icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[a.icon]} />
+            <h3 class="card-title">{a.title}</h3>
+            <p class="card-body">{a.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="register-row">
+        <a href="#sessions" class="register-btn">
+          REGISTER NOW <span aria-hidden="true">&rarr;</span>
+        </a>
+        <span class="register-note">SIGN UP EARLY — LIMITED SPACE AVAILABLE</span>
+      </div>
+    </section>
+
+    <section class="block curriculum">
+      <div class="curriculum-copy">
+        <span class="eyebrow">PROFESSIONAL CURRICULUM</span>
+        <h2 class="block-title">BUILT BY PRO PLAYERS</h2>
+        <p class="lede">
+          We are excited to announce that Zach Booth will be assisting in this training once the RSL season is finished. Until then — and after — every session is built to push players beyond their current level of skill and speed.
+        </p>
+      </div>
+      <div class="curriculum-cards">
+        <div class="card">
+          <h3 class="card-label">TOP TIER TRAINING</h3>
+          <p class="card-body">Every session follows a curriculum built at the professional level — the same standards, drills and expectations pros use, scaled for youth development. Players train harder, move quicker and touch the ball more than they ever have.</p>
+        </div>
+        <div class="card">
+          <h3 class="card-label">BEYOND YOUR CURRENT LEVEL</h3>
+          <p class="card-body">This program is designed to raise the ceiling: sharper technique, faster decision making, more explosive movement and the confidence to compete at the next level.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="sessions">
+      <span class="eyebrow">SEASON SCHEDULE</span>
+      <h2 class="block-title">PICK YOUR SESSION</h2>
+      <div class="sessions-grid">
+        {sessions.map(s => (
+          <div class="card session-card">
+            <span class="card-label">{s.number}</span>
+            <p class="session-dates">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons.calendar} />
+              {s.dates}
+            </p>
+            <p class="card-body">{s.body}</p>
+            <a href={sessionHref(s.id)} class="session-btn">
+              REGISTER <span aria-hidden="true">&rarr;</span>
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="block">
+      <span class="eyebrow">TRAIN WITH US</span>
+      <h2 class="block-title">TOP TRAINERS. LIMITED SPACE.</h2>
+      <div class="venue">
+        <div class="venue-details">
+          <p class="detail">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons.clock} />
+            <span>4:00 – 5:00 PM — Ages 11–12 · 5:00 – 6:00 PM — Ages 9–10</span>
+          </p>
+          <p class="detail detail--plain">
+            7 trainings per session — Mondays <small>(must be a club player to participate)</small>
+          </p>
+          <p class="detail">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons.pin} />
+            <span>Padel Den · 1440 N 1380 W, Orem, UT 84057</span>
+          </p>
+        </div>
+        <figure class="venue-photo">
+          <img src="/training/padel-den.webp" alt="Indoor blue padel courts at Padel Den in Orem, Utah" width="1920" height="1080" loading="lazy" />
+          <figcaption>A GREAT LITTLE TRAINING ARENA FOR SOCCER</figcaption>
+        </figure>
+      </div>
+
+      <div class="groups-grid">
+        {groups.map(g => (
+          <div class:list={['card', { 'card--highlight': g.highlight }]}>
+            <span class="card-label">{g.ages}</span>
+            <p class="group-time">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons.clock} />
+              {g.time}
+            </p>
+            <p class="card-body">Monday · Weekly</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="card price-card">
+        <span class="card-label">SESSION PRICE</span>
+        <p class="price"><strong>$195</strong> <span>/ 7 trainings</span></p>
+        <p class="card-body">Each player will receive a training shirt, jump rope and grip socks.</p>
+      </div>
+
+      <div class="register-row">
+        <a href="#sessions" class="register-btn">
+          REGISTER NOW <span aria-hidden="true">&rarr;</span>
+        </a>
+        <span class="register-note">SIGN UP EARLY — LIMITED SPACE AVAILABLE</span>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .block {
+    margin: 0 auto;
+    padding: 5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  #sessions {
+    scroll-margin-top: 60px;
+  }
+
+  .eyebrow {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    color: var(--ink);
+  }
+
+  .block-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2rem, 4.5vw, 3.75rem);
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    max-width: 1180px;
+    margin-bottom: 1.5rem;
+  }
+
+  .register-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+
+  .register-btn,
+  .session-btn {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    background: var(--orange);
+    color: #0f1014;
+    padding: 1rem 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    transition: background 0.2s;
+  }
+
+  .register-btn:hover,
+  .session-btn:hover {
+    background: #b8f020;
+  }
+
+  .register-note {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+  }
+
+  .card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 2.5rem 2.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card--highlight {
+    border-color: var(--orange);
+  }
+
+  .card-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+
+  .card-label {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    color: var(--ink);
+  }
+
+  .card-body {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .icon {
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+
+  .access-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .curriculum {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .curriculum-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .lede {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  .curriculum-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .session-dates,
+  .group-time {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+  }
+
+  .session-card .card-body {
+    flex: 1;
+  }
+
+  .session-btn {
+    width: 100%;
+    margin-top: 0.75rem;
+  }
+
+  .venue {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 1.5rem;
+  }
+
+  .venue-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .detail svg {
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+    color: var(--ink);
+  }
+
+  .detail--plain {
+    display: block;
+  }
+
+  .detail small {
+    font-size: 0.85rem;
+  }
+
+  .venue-photo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .venue-photo img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: 1px solid var(--border);
+  }
+
+  .venue-photo figcaption {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+  }
+
+  .groups-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .price-card {
+    gap: 0.6rem;
+  }
+
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    color: var(--muted);
+  }
+
+  .price strong {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: var(--ink);
+  }
+
+  .price span {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 1100px) {
+    .access-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sessions-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .block {
+      padding: 3.5rem 1.5rem;
+    }
+
+    .curriculum,
+    .venue,
+    .groups-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .curriculum {
+      gap: 2rem;
+    }
+
+    .register-row {
+      margin-top: 1.5rem;
+    }
+
+    .register-btn {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .access-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>
